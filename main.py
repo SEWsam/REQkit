@@ -2,7 +2,6 @@ import json
 import sys
 import click
 
-
 import selenium.common.exceptions
 from colorama import Fore, Style, init
 
@@ -78,6 +77,26 @@ def generate_data(pack_name=None, token=None, check=False):
             )
         else:
             return True
+    elif pack_name == 'wz-xp-boost':
+        if not check:
+            return (
+                "A Warzone XP Boost Pack",
+                "150,000",
+                "RequisitionPackId=38e0edae-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
+                f"={token}"
+            )
+        else:
+            return True
+    elif pack_name == 'dummy':
+        if not check:
+            return (
+                "A dummy XP Boost Pack",
+                "150,000",
+                "RequisitionPackId=3afdsfde-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
+                f"={token}"
+            )
+        else:
+            return True
     else:
         return False
 
@@ -103,6 +122,7 @@ def main(pack_name, username, password):
     There are currently two options for REQ Pack Name:\n
         * "bronze": A bronze REQ Pack.\n
         * "xp-boost": An Arena XP Boost Pack
+        * "wz-xp-boost": A Warzone XP Boost Pack
 
     The options are below. Both are required.:
     """
@@ -185,6 +205,6 @@ def main(pack_name, username, password):
 if __name__ == '__main__':
     with open("dist/logo") as f:
         print(f.read())
-    print(f"{Fore.CYAN}REQkit Version 1.0{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}REQkit Version 1.1{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for interacting with the undocumented Halo 5 REQ Pack API{Style.RESET_ALL}\n")
     main()

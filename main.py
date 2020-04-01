@@ -87,16 +87,6 @@ def generate_data(pack_name=None, token=None, check=False):
             )
         else:
             return True
-    elif pack_name == 'dummy':
-        if not check:
-            return (
-                "A dummy XP Boost Pack",
-                "150,000",
-                "RequisitionPackId=3afdsfde-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
     else:
         return False
 

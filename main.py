@@ -1,15 +1,18 @@
 import json
 import sys
 import click
-import os
 
-from colorama import Fore, Style
+
+import selenium.common.exceptions
+from colorama import Fore, Style, init
+
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from seleniumrequests import Chrome
 
+init(convert=True)
 mdot = u'\u00b7'
 
 login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
@@ -22,41 +25,36 @@ buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/re
 def login(user, passwd):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    driver = Chrome(f"{os.getcwd()}/chromedriver", options=chrome_options)
+    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)
     driver.get(login_url)
 
-    un_field = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "i0116")))
-    pw_field = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "i0118")))
-    next_button = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, "idSIButton9")))
+    un_field = (By.ID, "i0116")
+    pw_field = (By.ID, "i0118")
+    next_button = (By.ID, "idSIButton9")
 
-    un_field.send_keys(user)
-    next_button.click()
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located(un_field)).send_keys(user)
 
-    pw_field.send_keys(passwd)
-    login_button = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "idSIButton9")))
-    login_button.click()
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(next_button)).click()
+
+    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(pw_field)).send_keys(passwd)
+
+    log_in = (By.XPATH, '//*[contains(@value, "Sign in")]')
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located(log_in)).click()
 
     return driver
 
 
 def get_token(driver):
-    second_try = False
     store_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store"
     driver.request("GET", store_url)
-    while True:
-        try:
-            token_element = driver.find_element_by_name("__RequestVerificationToken")
-            return token_element.get_attribute("value")
-        except:
-            print(
-                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Username or Password?")
-            if not second_try:
-                print(f"[{mdot}] Retrying")
-            if second_try:
-                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
-                sys.exit()
-            second_try = True
-            continue
+    try:
+        token_element = driver.find_element_by_name("__RequestVerificationToken")
+        return token_element.get_attribute("value")
+    except:
+        print(
+            f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
+        return "retry"
 
 
 def generate_data(pack_name=None, token=None, check=False):
@@ -117,10 +115,29 @@ def main(pack_name, username, password):
         sys.exit()
 
     print(f"[{mdot}] Logging in to Halo with email '{username}'...")
-    driver = login(username, password)
+    second_try = False
+    while True:
+        try:
+            driver = login(username, password)
+        except selenium.common.exceptions.TimeoutException:
+            print(
+                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
+            sys.exit()
 
-    print(f"[{mdot}] Verifying login with Xbox...")
-    token = get_token(driver)
+        print(f"[{mdot}] Verifying login with Xbox...")
+
+        token = get_token(driver)
+        if token != "retry":
+            break
+        else:
+            if not second_try:
+                print(f"[{mdot}] Retrying")
+                second_try = True
+                continue
+            if second_try:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
+                sys.exit()
+
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
     data = generate_data(pack_name=pack_name, token=token)
@@ -128,37 +145,45 @@ def main(pack_name, username, password):
     price = data[1]
     request_data = data[2]
 
-    confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
-    if confirm_buy == 'y':
-        print(f"[{mdot}] Buying pack...")
-        headers = {
-            'Connection': 'keep-alive',
-            'Origin': 'https://www.halowaypoint.com',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Accept': '*/*',
-            'X-Requested-With': 'XMLHttpRequest',
-            'Request-Id': '|pXnSc.C9p//',
-            'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
-            'Sec-Fetch-Site': 'same-origin',
-            'Sec-Fetch-Mode': 'cors',
-            'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
-        }
+    while True:
+        confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
+        if confirm_buy[0] == 'y':
+            print(f"[{mdot}] Buying pack...")
+            headers = {
+                'Connection': 'keep-alive',
+                'Origin': 'https://www.halowaypoint.com',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Accept': '*/*',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Request-Id': '|pXnSc.C9p//',
+                'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
+                'Sec-Fetch-Site': 'same-origin',
+                'Sec-Fetch-Mode': 'cors',
+                'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
+            }
 
-        response = driver.request("POST", buy_url, headers=headers, data=request_data).content.decode()
-        json_response = json.loads(response)
-        try:
-            if json_response["State"] is None:
-                print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
-        except KeyError:
-            if json_response["Message"] == "You do not have enough credits to purchase this":
-                print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
+            response = driver.request("POST", buy_url, headers=headers, data=request_data).content.decode()
+            json_response = json.loads(response)
+            try:
+                if json_response["State"] is None:
+                    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
+                break
+            except KeyError:
+                if json_response["Message"] == "You do not have enough credits to purchase this":
+                    print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
+                break
+        elif confirm_buy[0] == 'n':
+            print(f"[{mdot}] Exiting...")
+            sys.exit()
+        else:
+            continue
 
 
 if __name__ == '__main__':
-    with open("logo") as f:
+    with open("dist/logo") as f:
         print(f.read())
     print(f"{Fore.CYAN}REQkit Version 1.0{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for interacting with the undocumented Halo 5 REQ Pack API{Style.RESET_ALL}\n")

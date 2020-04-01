@@ -111,7 +111,7 @@ def main(pack_name, username, password):
     Argument: REQ Pack name: The name of the REQ Pack to be bought.\n
     There are currently two options for REQ Pack Name:\n
         * "bronze": A bronze REQ Pack.\n
-        * "xp-boost": An Arena XP Boost Pack
+        * "xp-boost": An Arena XP Boost Pack\n
         * "wz-xp-boost": A Warzone XP Boost Pack
 
     The options are below. Both are required.:

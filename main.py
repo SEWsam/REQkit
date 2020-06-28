@@ -1,3 +1,9 @@
+"""
+Copyright (c) 2020 Samuel Wirth
+
+Author: Samuel "SEWsam" Wirth
+Version: 1.2
+"""
 import json
 import sys
 import click
@@ -67,6 +73,16 @@ def generate_data(pack_name=None, token=None, check=False):
             )
         else:
             return True
+    elif pack_name == 'wz-xp-boost':
+        if not check:
+            return (
+                "A Warzone XP Boost Pack",
+                "150,000",
+                "RequisitionPackId=38e0edae-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
+                f"={token}"
+            )
+        else:
+            return True
     elif pack_name == 'bronze':
         if not check:
             return (
@@ -77,12 +93,32 @@ def generate_data(pack_name=None, token=None, check=False):
             )
         else:
             return True
-    elif pack_name == 'wz-xp-boost':
+    elif pack_name == 'silver':
         if not check:
             return (
-                "A Warzone XP Boost Pack",
-                "150,000",
-                "RequisitionPackId=38e0edae-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
+                "A Silver REQ Pack",
+                "5,000",
+                "RequisitionPackId=3ce05b60-a118-4ad1-9617-bc04f64ac4d8&ExpectedPrice=150000&__RequestVerificationToken"
+                f"={token}"
+            )
+        else:
+            return True
+    elif pack_name == 'gold':
+        if not check:
+            return (
+                "A Gold REQ Pack",
+                "10,000",
+                "RequisitionPackId=3a1614d9-20a4-4817-a189-88cb781e9152&ExpectedPrice=150000&__RequestVerificationToken"
+                f"={token}"
+            )
+        else:
+            return True
+    elif pack_name == 'hcs':
+        if not check:
+            return (
+                "An HCS REQ Pack",
+                "80,000",
+                "RequisitionPackId=0d7018ae-74f6-4b6a-b819-22022f82cd45&ExpectedPrice=150000&__RequestVerificationToken"
                 f"={token}"
             )
         else:
@@ -109,8 +145,11 @@ def main(pack_name, username, password):
 
 
     Argument: REQ Pack name: The name of the REQ Pack to be bought.\n
-    There are currently two options for REQ Pack Name:\n
+    The Options are:\n
         * "bronze": A bronze REQ Pack.\n
+        * "silver": A Silver REQ Pack. \n
+        * "gold": A Gold REQ Pack\n
+        * "hcs": An HCS Special REQ Pack.\n
         * "xp-boost": An Arena XP Boost Pack\n
         * "wz-xp-boost": A Warzone XP Boost Pack
 

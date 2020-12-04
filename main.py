@@ -8,6 +8,7 @@ import json
 import sys
 import click
 import requests
+import time
 
 import selenium.common.exceptions
 from colorama import Fore, Style, init
@@ -240,6 +241,7 @@ def main(pack_name, username, password):
                 break
         elif confirm_buy[0] == 'n':
             print(f"[{mdot}] Exiting...")
+            time.sleep(.5)
             sys.exit()
         else:
             continue
@@ -255,3 +257,6 @@ if __name__ == '__main__':
     except selenium.common.exceptions.SessionNotCreatedException:
         print("Chromedriver Update required. Updating now...")
         update()
+
+    time.sleep(1)
+    sys.exit()

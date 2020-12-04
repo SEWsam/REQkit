@@ -7,10 +7,12 @@ Version: 1.2
 import json
 import sys
 import click
+import requests
 
 import selenium.common.exceptions
 from colorama import Fore, Style, init
 
+from zipfile import ZipFile
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,6 +27,18 @@ login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0B
             "&locale=en-us&display=touch&state=https%253a%252f%252fwww.halowaypoint.com%252fen-us "
 
 buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
+
+
+def update():
+    latest = requests.get("https://chromedriver.storage.googleapis.com/LATEST_RELEASE").text
+    driver_zip = requests.get(f"https://chromedriver.storage.googleapis.com/{latest}/chromedriver_win32.zip").content
+    with open('temp/chromedriver_win32.zip', 'wb') as f:
+        f.write(driver_zip)
+    driver_zip = 'temp/chromedriver_win32.zip'
+    with ZipFile(driver_zip, 'r') as zipObj:
+        zipObj.extractall("C:\\bin")
+
+    print("Chromedriver update finished. Please restart REQkit")
 
 
 def login(user, passwd):
@@ -236,4 +250,8 @@ if __name__ == '__main__':
         print(f.read())
     print(f"{Fore.CYAN}REQkit Version 1.1{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for interacting with the undocumented Halo 5 REQ Pack API{Style.RESET_ALL}\n")
-    main()
+    try:
+        main()
+    except selenium.common.exceptions.SessionNotCreatedException:
+        print("Chromedriver Update required. Updating now...")
+        update()

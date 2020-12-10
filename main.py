@@ -39,7 +39,7 @@ def update():
     with ZipFile(driver_zip, 'r') as zipObj:
         zipObj.extractall("C:\\bin")
 
-    print("Chromedriver update finished. Please restart REQkit")
+    print("Chromedriver update finished. Please restart REQkit. Exiting in 1 second.")
 
 
 def login(user, passwd):
@@ -250,7 +250,7 @@ def main(pack_name, username, password):
 if __name__ == '__main__':
     with open("dist/logo") as f:
         print(f.read())
-    print(f"{Fore.CYAN}REQkit Version 1.1{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}REQkit Version 1.2 (final){Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for interacting with the undocumented Halo 5 REQ Pack API{Style.RESET_ALL}\n")
     try:
         main()

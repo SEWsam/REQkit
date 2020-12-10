@@ -234,6 +234,7 @@ def main(pack_name, username, password):
             try:
                 if json_response["State"] is None:
                     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
+                    time.sleep(.5)
                 break
             except KeyError:
                 if json_response["Message"] == "You do not have enough credits to purchase this":
@@ -257,6 +258,3 @@ if __name__ == '__main__':
     except selenium.common.exceptions.SessionNotCreatedException:
         print("Chromedriver Update required. Updating now...")
         update()
-
-    time.sleep(1)
-    sys.exit()

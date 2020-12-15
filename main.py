@@ -5,10 +5,10 @@ Author: Samuel "SEWsam" Wirth
 Version: 1.2
 """
 import json
-import sys
 import click
 import requests
 import time
+import os
 
 import selenium.common.exceptions
 from colorama import Fore, Style, init
@@ -30,7 +30,12 @@ login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0B
 buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
 
 
-def update():
+def update(task):
+    try:
+        os.mkdir("temp")
+    except FileExistsError:
+        pass
+
     latest = requests.get("https://chromedriver.storage.googleapis.com/LATEST_RELEASE").text
     driver_zip = requests.get(f"https://chromedriver.storage.googleapis.com/{latest}/chromedriver_win32.zip").content
     with open('temp/chromedriver_win32.zip', 'wb') as f:
@@ -39,7 +44,7 @@ def update():
     with ZipFile(driver_zip, 'r') as zipObj:
         zipObj.extractall("C:\\bin")
 
-    print("Chromedriver update finished. Please restart REQkit. Exiting in 1 second.")
+    print(f"Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 2 seconds.")
 
 
 def login(user, passwd):
@@ -172,11 +177,11 @@ def main(pack_name, username, password):
     """
     if username is None or password is None:
         print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
-        sys.exit()
+        return
 
     if not generate_data(pack_name=pack_name, check=True):
         print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Pack Name")
-        sys.exit()
+        return
 
     print(f"[{mdot}] Logging in to Halo with email '{username}'...")
     second_try = False
@@ -186,7 +191,7 @@ def main(pack_name, username, password):
         except selenium.common.exceptions.TimeoutException:
             print(
                 f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
-            sys.exit()
+            return
 
         print(f"[{mdot}] Verifying login with Xbox...")
 
@@ -200,7 +205,7 @@ def main(pack_name, username, password):
                 continue
             if second_try:
                 print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
-                sys.exit()
+                return
 
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
@@ -234,7 +239,6 @@ def main(pack_name, username, password):
             try:
                 if json_response["State"] is None:
                     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
-                    time.sleep(.5)
                 break
             except KeyError:
                 if json_response["Message"] == "You do not have enough credits to purchase this":
@@ -242,19 +246,23 @@ def main(pack_name, username, password):
                 break
         elif confirm_buy[0] == 'n':
             print(f"[{mdot}] Exiting...")
-            time.sleep(.5)
-            sys.exit()
+            return
         else:
             continue
 
 
 if __name__ == '__main__':
-    with open("dist/logo") as f:
+    with open("resource/logo") as f:
         print(f.read())
-    print(f"{Fore.CYAN}REQkit Version 1.2 (final){Style.RESET_ALL}")
-    print(f"{Fore.GREEN}A tool for interacting with the undocumented Halo 5 REQ Pack API{Style.RESET_ALL}\n")
+    print(f"{Fore.CYAN}REQkit Version 1.2.1{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}\n")
     try:
         main()
     except selenium.common.exceptions.SessionNotCreatedException:
-        print("Chromedriver Update required. Updating now...")
-        update()
+        print("Chromedriver update required. Updating now...")
+        update("update")
+    except selenium.common.exceptions.WebDriverException:
+        print("Chromedriver is not installed. Installing now...")
+        update("installation")
+
+    time.sleep(2)

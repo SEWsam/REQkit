@@ -2,7 +2,7 @@
 Copyright (c) 2020 Samuel Wirth
 
 Author: Samuel "SEWsam" Wirth
-Version: 1.2
+Version: 1.2.1
 """
 import json
 import click

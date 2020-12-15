@@ -44,7 +44,8 @@ def update(task):
     with ZipFile(driver_zip, 'r') as zipObj:
         zipObj.extractall("C:\\bin")
 
-    print(f"Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 2 seconds.")
+    print(f"Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 seconds.")
+    time.sleep(1.5)
 
 
 def login(user, passwd):

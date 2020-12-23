@@ -2,7 +2,7 @@
 Copyright (c) 2020 Samuel Wirth
 
 Author: Samuel "SEWsam" Wirth
-Version: 1.2.1
+Version: 1.3-dev
 """
 import json
 import click
@@ -16,7 +16,7 @@ from colorama import Fore, Style, init
 from zipfile import ZipFile
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from seleniumrequests import Chrome
 
@@ -30,7 +30,12 @@ login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0B
 buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
 
 
-def update(task):
+def update():
+    # TODO: OTA Update function
+    pass
+
+
+def update_driver(task):
     try:
         os.mkdir("temp")
     except FileExistsError:
@@ -59,14 +64,14 @@ def login(user, passwd):
     pw_field = (By.ID, "i0118")
     next_button = (By.ID, "idSIButton9")
 
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located(un_field)).send_keys(user)
+    WebDriverWait(driver, 20).until(ec.presence_of_element_located(un_field)).send_keys(user)
 
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(next_button)).click()
+    WebDriverWait(driver, 20).until(ec.element_to_be_clickable(next_button)).click()
 
-    WebDriverWait(driver, 20).until(EC.element_to_be_clickable(pw_field)).send_keys(passwd)
+    WebDriverWait(driver, 20).until(ec.element_to_be_clickable(pw_field)).send_keys(passwd)
 
     log_in = (By.XPATH, '//*[contains(@value, "Sign in")]')
-    WebDriverWait(driver, 20).until(EC.presence_of_element_located(log_in)).click()
+    WebDriverWait(driver, 20).until(ec.presence_of_element_located(log_in)).click()
 
     return driver
 
@@ -84,6 +89,7 @@ def get_token(driver):
 
 
 def generate_data(pack_name=None, token=None, check=False):
+    # region TODO: Replace 'if' tree with JSON database implementation
     if pack_name == 'xp-boost':
         if not check:
             return (
@@ -146,6 +152,7 @@ def generate_data(pack_name=None, token=None, check=False):
             return True
     else:
         return False
+    # endregion
 
 
 @click.command(options_metavar="<options>")
@@ -166,6 +173,7 @@ def main(pack_name, username, password):
 
 
     Argument: REQ Pack name: The name of the REQ Pack to be bought.\n
+    TODO: Convert docstring to f-string, read variables from database file
     The Options are:\n
         * "bronze": A bronze REQ Pack.\n
         * "silver": A Silver REQ Pack. \n
@@ -210,10 +218,13 @@ def main(pack_name, username, password):
 
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
+    # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
+    # region Assign Vars, TODO: Keep this, might work with database upgrade. Move inside logic
     data = generate_data(pack_name=pack_name, token=token)
     pack_full_name = data[0]
     price = data[1]
     request_data = data[2]
+    # endregion
 
     while True:
         confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
@@ -222,7 +233,8 @@ def main(pack_name, username, password):
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, like Gecko) '
+                              'Chrome/79.0.3945.117 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -255,15 +267,19 @@ def main(pack_name, username, password):
 if __name__ == '__main__':
     with open("resource/logo") as f:
         print(f.read())
-    print(f"{Fore.CYAN}REQkit Version 1.2.1{Style.RESET_ALL}")
+    # TODO: Read version number from database
+    print(f"{Fore.CYAN}REQkit Version 1.3-dev{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}\n")
+    # TODO: Implement OTA updates.
+    # if foo < bar:
+    #     update()
     try:
         main()
     except selenium.common.exceptions.SessionNotCreatedException:
         print("Chromedriver update required. Updating now...")
-        update("update")
+        update_driver("update")
     except selenium.common.exceptions.WebDriverException:
         print("Chromedriver is not installed. Installing now...")
-        update("installation")
+        update_driver("installation")
 
     time.sleep(2)

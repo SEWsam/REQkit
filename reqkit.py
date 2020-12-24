@@ -2,13 +2,14 @@
 Copyright (c) 2020 Samuel Wirth
 
 Author: Samuel "SEWsam" Wirth
-Version: 1.3-dev
+API Version: 1.3.X-dev
 """
 import json
 import click
 import requests
 import time
 import os
+import sys
 
 import selenium.common.exceptions
 from colorama import Fore, Style, init
@@ -90,6 +91,7 @@ def get_token(driver):
 
 def generate_data(pack_name=None, token=None, check=False):
     # region TODO: Replace 'if' tree with JSON database implementation
+
     if pack_name == 'xp-boost':
         if not check:
             return (
@@ -155,8 +157,12 @@ def generate_data(pack_name=None, token=None, check=False):
     # endregion
 
 
-@click.command(options_metavar="<options>")
-@click.argument('pack-name', metavar="<REQ Pack Name>")
+CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
+
+
+@click.command(options_metavar="<options>", context_settings=CONTEXT_SETTINGS)
+@click.argument('pack-name', metavar="<REQ Pack Name|noarg>")
+@click.option("--help", "-h", is_flag=True, help="More detailed help. Run 'reqkit.py -h noarg'")
 @click.option(
     "--username", "-u", metavar="Email",
     help="The Microsoft/Xbox email associated with your Halo 5 Profile"
@@ -165,25 +171,18 @@ def generate_data(pack_name=None, token=None, check=False):
     "--password", "-p", metavar="Text",
     help="The Password for the associated Microsoft/Xbox email account."
 )
-def main(pack_name, username, password):
+def main(pack_name, help, username, password):
     """
     Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
-    In order for REQkit to work, you need to provide one argument and two
-    options:
 
-
-    Argument: REQ Pack name: The name of the REQ Pack to be bought.\n
-    TODO: Convert docstring to f-string, read variables from database file
-    The Options are:\n
-        * "bronze": A bronze REQ Pack.\n
-        * "silver": A Silver REQ Pack. \n
-        * "gold": A Gold REQ Pack\n
-        * "hcs": An HCS Special REQ Pack.\n
-        * "xp-boost": An Arena XP Boost Pack\n
-        * "wz-xp-boost": A Warzone XP Boost Pack
-
-    The options are below. Both are required.:
+    Minimal help display. Run '--help noarg', or '-h noarg' for more info
     """
+    if help:
+        print(
+            f"Usage: reqkit.py [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
+            f"Guardians'.\n\nUse the 'sell' function to sell packs.\nThe REQ Pack Names are:\n{db['docstring']}"
+        )
+        sys.exit()
     if username is None or password is None:
         print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
         return
@@ -265,14 +264,18 @@ def main(pack_name, username, password):
 
 
 if __name__ == '__main__':
-    with open("resource/logo") as f:
-        print(f.read())
-    # TODO: Read version number from database
-    print(f"{Fore.CYAN}REQkit Version 1.3-dev{Style.RESET_ALL}")
-    print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}\n")
     # TODO: Implement OTA updates.
     # if foo < bar:
     #     update()
+    with open("resource/db.json") as f:
+        db = json.load(f)
+
+    with open("resource/logo") as f:
+        print(f.read())
+    print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
+    print(f"{Fore.YELLOW}Run 'reqkit.py -h noarg' for help, or 'reqkit.py --usage' for command structure'{Style.RESET_ALL}\n")
+
     try:
         main()
     except selenium.common.exceptions.SessionNotCreatedException:

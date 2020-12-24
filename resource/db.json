@@ -1,0 +1,43 @@
+{
+  "version": "1.3",
+  "docstring": "        * \"bronze\": A bronze REQ Pack.\n        * \"silver\": A Silver REQ Pack.\n        * \"gold\": A Gold REQ Pack\n        * \"hcs\": An HCS Special REQ Pack.\n        * \"xp-boost\": An Arena XP Boost Pack\n        * \"wz-xp-boost\": A Warzone XP Boost Pack",
+  "packs": [
+    [
+      "wz-xp-boost",
+      "A Warzone XP Boost Pack",
+      "150,000",
+      "RequisitionPackId=38e0edae-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
+    ],
+    [
+      "xp-boost",
+      "An 'Arena XP Boost Pack'",
+      "150,000",
+      "RequisitionPackId=3cf88495-70e9-4972-8809-22380b063f3d&ExpectedPrice=150000&__RequestVerificationToken"
+    ],
+    [
+      "gold",
+      "A Gold REQ Pack",
+      "10,000",
+      "RequisitionPackId=3a1614d9-20a4-4817-a189-88cb781e9152&ExpectedPrice=150000&__RequestVerificationToken"
+    ],
+    [
+      "silver",
+      "A Silver REQ Pack",
+      "5,000",
+      "RequisitionPackId=3ce05b60-a118-4ad1-9617-bc04f64ac4d8&ExpectedPrice=150000&__RequestVerificationToken"
+    ],
+    [
+      "bronze",
+      "A Bronze Pack",
+      "1250",
+      "RequisitionPackId=5f96269a-58f8-473e-9897-42a4deb1bf09&ExpectedPrice=1250&__RequestVerificationToken"
+    ],
+    [
+      "hcs",
+      "An HCS REQ Pack",
+      "80,000",
+      "RequisitionPackId=0d7018ae-74f6-4b6a-b819-22022f82cd45&ExpectedPrice=150000&__RequestVerificationToken"
+    ]
+  ],
+  "reqs": []
+}

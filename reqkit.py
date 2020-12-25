@@ -102,71 +102,17 @@ def get_token(driver):
         return "retry"
 
 
-def generate_data(pack_name=None, token=None, check=False):
-    # region TODO: Replace 'if' tree with JSON database implementation
+def generate_data(pack_name=None, check=False):
+    # region TODO: Replace 'if' tree with JSON database implementation Done?
+    for pack in db["packs"]:
+        if pack[0] == pack_name:
+            if not check:
+                return pack
+            else:
+                return True
+    
+    return False
 
-    if pack_name == 'xp-boost':
-        if not check:
-            return (
-                "An 'Arena XP Boost Pack'",
-                "150,000",
-                "RequisitionPackId=3cf88495-70e9-4972-8809-22380b063f3d&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    elif pack_name == 'wz-xp-boost':
-        if not check:
-            return (
-                "A Warzone XP Boost Pack",
-                "150,000",
-                "RequisitionPackId=38e0edae-786c-40a3-b020-cbd9d2ab9268&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    elif pack_name == 'bronze':
-        if not check:
-            return (
-                "A Bronze Pack",
-                "1250",
-                "RequisitionPackId=5f96269a-58f8-473e-9897-42a4deb1bf09&ExpectedPrice=1250&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    elif pack_name == 'silver':
-        if not check:
-            return (
-                "A Silver REQ Pack",
-                "5,000",
-                "RequisitionPackId=3ce05b60-a118-4ad1-9617-bc04f64ac4d8&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    elif pack_name == 'gold':
-        if not check:
-            return (
-                "A Gold REQ Pack",
-                "10,000",
-                "RequisitionPackId=3a1614d9-20a4-4817-a189-88cb781e9152&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    elif pack_name == 'hcs':
-        if not check:
-            return (
-                "An HCS REQ Pack",
-                "80,000",
-                "RequisitionPackId=0d7018ae-74f6-4b6a-b819-22022f82cd45&ExpectedPrice=150000&__RequestVerificationToken"
-                f"={token}"
-            )
-        else:
-            return True
-    else:
-        return False
     # endregion
 
 
@@ -196,6 +142,7 @@ def main(pack_name, help, username, password):
             f"Guardians'.\n\nUse the 'sell' function to sell packs.\nThe REQ Pack Names are:\n{db['docstring']}"
         )
         sys.exit()
+
     if username is None or password is None:
         print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
         return
@@ -233,9 +180,9 @@ def main(pack_name, help, username, password):
     # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
     # region Assign Vars, TODO: Keep this, might work with database upgrade. Move inside logic
     data = generate_data(pack_name=pack_name, token=token)
-    pack_full_name = data[0]
-    price = data[1]
-    request_data = data[2]
+    pack_full_name = data[1]
+    price = data[2]
+    request_data = data[3] + token
     # endregion
 
     while True:

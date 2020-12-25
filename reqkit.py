@@ -103,17 +103,14 @@ def get_token(driver):
 
 
 def generate_data(pack_name=None, check=False):
-    # region TODO: Replace 'if' tree with JSON database implementation Done?
     for pack in db["packs"]:
         if pack[0] == pack_name:
             if not check:
                 return pack
             else:
                 return True
-    
-    return False
 
-    # endregion
+    return False
 
 
 CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
@@ -178,12 +175,10 @@ def main(pack_name, help, username, password):
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
     # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
-    # region Assign Vars, TODO: Keep this, might work with database upgrade. Move inside logic
-    data = generate_data(pack_name=pack_name, token=token)
+    data = generate_data(pack_name=pack_name)
     pack_full_name = data[1]
     price = data[2]
     request_data = data[3] + token
-    # endregion
 
     while True:
         confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
@@ -192,8 +187,7 @@ def main(pack_name, help, username, password):
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, like Gecko) '
-                              'Chrome/79.0.3945.117 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',

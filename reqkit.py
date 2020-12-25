@@ -32,8 +32,18 @@ buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/re
 
 
 def update():
-    # TODO: OTA Update function
-    pass
+    print(f"[!] A REQkit update ({Fore.YELLOW}{remote_db['version']}{Style.RESET_ALL}) is required. Installing now.")
+    time.sleep(.5)
+
+    with open("resource/db.json", "w") as f_writeable:
+        f_writeable.write(json.dumps(remote_db, indent=4))
+
+    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Update Successful. Please relaunch REQkit. Exiting in 2 seconds.")
+    time.sleep(2)
+    sys.exit()
+
+    # TODO: Save for v1.5.x
+    # subprocess.Popen(["reqkit.exe", f"--{username}"])
 
 
 def update_driver(task):
@@ -50,7 +60,10 @@ def update_driver(task):
     with ZipFile(driver_zip, 'r') as zipObj:
         zipObj.extractall("C:\\bin")
 
-    print(f"Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 seconds.")
+    print(
+        f"[{Fore.GREEN}+{Style.RESET_ALL}]Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 "
+        f"seconds. "
+    )
     time.sleep(1.5)
 
 
@@ -83,7 +96,7 @@ def get_token(driver):
     try:
         token_element = driver.find_element_by_name("__RequestVerificationToken")
         return token_element.get_attribute("value")
-    except:
+    except selenium.common.exceptions.NoSuchElementException:
         print(
             f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
         return "retry"
@@ -264,17 +277,41 @@ def main(pack_name, help, username, password):
 
 
 if __name__ == '__main__':
-    # TODO: Implement OTA updates.
-    # if foo < bar:
-    #     update()
     with open("resource/db.json") as f:
         db = json.load(f)
 
     with open("resource/logo") as f:
         print(f.read())
+
     print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
-    print(f"{Fore.YELLOW}Run 'reqkit.py -h noarg' for help, or 'reqkit.py --usage' for command structure'{Style.RESET_ALL}\n")
+    print(
+        f"{Fore.YELLOW}Run 'reqkit.py -h noarg' for help, or 'reqkit.py --usage' for command structure'"
+        f"{Style.RESET_ALL}\n"
+    )
+
+    remote_db = requests.get("https://sewsam.github.io/download/db.json").json()
+    remote_ver = remote_db["version"].split(".")
+    local_ver = db["version"].split(".")
+
+    major_gt = False
+    if int(local_ver[0]) < int(remote_ver[0]) or int(local_ver[1]) < int(remote_ver[1]):
+        major_gt = True
+        print(
+            f"[!] An optional feature upgrade {Fore.YELLOW}({remote_db['version']}){Style.RESET_ALL} is available."
+            f" Download it from https://github.com/SEWsam/REQkit/releases"
+        )
+    if not major_gt:
+        try:
+            try:
+                patch_ver = int(local_ver[2])
+            except IndexError:
+                patch_ver = 0
+
+            if patch_ver < int(remote_ver[2]):
+                update()
+        except IndexError:
+            pass
 
     try:
         main()

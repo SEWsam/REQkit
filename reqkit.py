@@ -1,5 +1,5 @@
 """
-Copyright (c) 2021 Samuel Wirth
+Copyright (c) 2020 - 2021 Samuel Wirth
 
 Author: Samuel "SEWsam" Wirth
 API Version: 1.3.X-dev

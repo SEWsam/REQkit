@@ -187,7 +187,8 @@ def main(pack_name, help, username, password):
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
+                              'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',

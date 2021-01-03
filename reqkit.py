@@ -159,6 +159,15 @@ def buy_pack(driver, token, pack_name):
 
 def sell_reqs(driver, token):
     # TODO: Sell stuff
+    """
+    IDEA: Cmdline for selling. Commands include: 'list', 'find <arg|str>', 'sell <arg|int> <arg|int>'
+        * list: Show a numbered list of all req cards, in order from db.json.
+        * find: Find a card by search term. Code:
+            for index, card in enumerate(cards):
+                if term in card[0]:
+                    print(f"[{index}] {card[0]} - {card[1]} Points")
+        * sell: sell a card by index value in db.json, obtained through 'list' or 'find'
+    """
     pass
 
 

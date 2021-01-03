@@ -161,7 +161,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
 
 
 @click.command(options_metavar="<options>", context_settings=CONTEXT_SETTINGS)
-@click.argument('pack-name', metavar="<REQ Pack Name|noarg>")
+@click.argument('req-arg', metavar="<REQ Pack Name|noarg>")
 @click.option("--help", "-h", is_flag=True, help="More detailed help. Run 'reqkit.py -h noarg'")
 @click.option(
     "--username", "-u", metavar="Email",
@@ -171,7 +171,7 @@ CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
     "--password", "-p", metavar="Text",
     help="The Password for the associated Microsoft/Xbox email account."
 )
-def main(pack_name, help, username, password):
+def main(req_arg, help, username, password):
     """
     Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
 
@@ -188,10 +188,10 @@ def main(pack_name, help, username, password):
     if username is None or password is None:
         print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
         return
-
-    if not generate_data(pack_name=pack_name, check=True):
-        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Pack Name")
-        return
+    if req_arg != "sell":
+        if not generate_data(pack_name=req_arg, check=True):
+            print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
+            return
 
     print(f"[{mdot}] Logging in to Halo with email '{username}'...")
     second_try = False
@@ -220,7 +220,7 @@ def main(pack_name, help, username, password):
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
     # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
-    buy_pack(driver, token, pack_name)
+    buy_pack(driver, token, req_arg)
 
 
 if __name__ == '__main__':

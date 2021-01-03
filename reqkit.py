@@ -113,6 +113,50 @@ def generate_data(pack_name=None, check=False):
     return False
 
 
+def buy_pack(driver, token, pack_name):
+    data = generate_data(pack_name=pack_name)
+    pack_full_name = data[1]
+    price = data[2]
+    request_data = data[3] + token
+
+    while True:
+        confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
+        if confirm_buy[0] == 'y':
+            print(f"[{mdot}] Buying pack...")
+            headers = {
+                'Connection': 'keep-alive',
+                'Origin': 'https://www.halowaypoint.com',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
+                              'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Accept': '*/*',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Request-Id': '|pXnSc.C9p//',
+                'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
+                'Sec-Fetch-Site': 'same-origin',
+                'Sec-Fetch-Mode': 'cors',
+                'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
+            }
+
+            response = driver.request("POST", buy_url, headers=headers, data=request_data).content.decode()
+            json_response = json.loads(response)
+            try:
+                if json_response["State"] is None:
+                    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
+                break
+            except KeyError:
+                if json_response["Message"] == "You do not have enough credits to purchase this":
+                    print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
+                break
+        elif confirm_buy[0] == 'n':
+            print(f"[{mdot}] Exiting...")
+            return
+        else:
+            continue
+
+
 CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
 
 
@@ -133,6 +177,7 @@ def main(pack_name, help, username, password):
 
     Minimal help display. Run '--help noarg', or '-h noarg' for more info
     """
+
     if help:
         print(
             f"Usage: reqkit.py [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
@@ -175,47 +220,7 @@ def main(pack_name, help, username, password):
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
     # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
-    data = generate_data(pack_name=pack_name)
-    pack_full_name = data[1]
-    price = data[2]
-    request_data = data[3] + token
-
-    while True:
-        confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
-        if confirm_buy[0] == 'y':
-            print(f"[{mdot}] Buying pack...")
-            headers = {
-                'Connection': 'keep-alive',
-                'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
-                              'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'Accept': '*/*',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Request-Id': '|pXnSc.C9p//',
-                'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
-                'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Mode': 'cors',
-                'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
-            }
-
-            response = driver.request("POST", buy_url, headers=headers, data=request_data).content.decode()
-            json_response = json.loads(response)
-            try:
-                if json_response["State"] is None:
-                    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
-                break
-            except KeyError:
-                if json_response["Message"] == "You do not have enough credits to purchase this":
-                    print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
-                break
-        elif confirm_buy[0] == 'n':
-            print(f"[{mdot}] Exiting...")
-            return
-        else:
-            continue
+    buy_pack(driver, token, pack_name)
 
 
 if __name__ == '__main__':
@@ -263,5 +268,6 @@ if __name__ == '__main__':
     except selenium.common.exceptions.WebDriverException:
         print("Chromedriver is not installed. Installing now...")
         update_driver("installation")
+    finally:
+        time.sleep(2)
 
-    time.sleep(2)

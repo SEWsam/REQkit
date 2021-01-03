@@ -157,6 +157,11 @@ def buy_pack(driver, token, pack_name):
             continue
 
 
+def sell_reqs(driver, token):
+    # TODO: Sell stuff
+    pass
+
+
 CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
 
 
@@ -192,9 +197,6 @@ def main(req_arg, help, username, password):
         if not generate_data(pack_name=req_arg, check=True):
             print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
             return
-    # TODO: Remove this on selling branch, after merge.
-    else:
-        sys.exit()
 
     print(f"[{mdot}] Logging in to Halo with email '{username}'...")
     second_try = False
@@ -222,8 +224,10 @@ def main(req_arg, help, username, password):
 
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
 
-    # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
-    buy_pack(driver, token, req_arg)
+    if req_arg != "sell":
+        buy_pack(driver, token, req_arg)
+    else:
+        sell_reqs(driver, token)
 
 
 if __name__ == '__main__':

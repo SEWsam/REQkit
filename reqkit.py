@@ -192,6 +192,9 @@ def main(req_arg, help, username, password):
         if not generate_data(pack_name=req_arg, check=True):
             print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
             return
+    # TODO: Remove this on selling branch, after merge.
+    else:
+        sys.exit()
 
     print(f"[{mdot}] Logging in to Halo with email '{username}'...")
     second_try = False

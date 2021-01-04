@@ -200,11 +200,12 @@ def sell_cards(driver, token, card_id, quantity):
                         i = 0
                     print(
                         f"\n[{Fore.RED}-{Style.RESET_ALL}] Sell Error. You may have sold all of this REQ. {i} packs "
-                        f"were sucessfully sold. You have gained {i * int(card_price)} REQ Points. Type 'exit' to exit "
+                        f"were sucessfully sold. You have gained {i * int(card_price)} REQ Points. "
+                        f"Type 'exit' to exit\n"
                     )
                     return
 
-            print(f"\n[{Fore.GREEN}+{Style.RESET_ALL}] Success selling all REQs! Type 'exit' to exit.")
+            print(f"\n[{Fore.GREEN}+{Style.RESET_ALL}] Success selling all REQs! Type 'exit' to exit.\n")
             return
         elif confirm_sell[0] == 'n':
             print(f"[{mdot}] Cancelling. Type 'exit' to exit.")
@@ -223,6 +224,7 @@ def sell_cmdline(driver, token):
         elif cmd == "list":
             for index, req in enumerate(db["reqs"]):
                 print(f"[{index}] {req[0]} - {req[1]} Points")
+            print()
             continue
         elif cmd == "help":
             print(
@@ -230,8 +232,9 @@ def sell_cmdline(driver, token):
                 "   * help - Shows this menu\n"
                 "   * list - list all reqs and their IDs\n"
                 "   * find <term> - find a REQ and its ID by search term.\n"
-                "   * sell <id> <quantity> - sell a REQ by its ID, X amount of times."
+                "   * sell <id> <quantity> - sell a REQ by its ID, X amount of times.\n"
             )
+            continue
 
         cmd_args = cmd.split(" ", 1)
 
@@ -240,6 +243,7 @@ def sell_cmdline(driver, token):
             for index, req in enumerate(db["reqs"]):
                 if term in str(req[0]).lower():
                     print(f"[{index}] {req[0]} - {req[1]} Points")
+            print()
         elif cmd_args[0] == "sell":
             cmd_args = cmd.split(" ", 2)
             try:
@@ -251,6 +255,8 @@ def sell_cmdline(driver, token):
                 continue
 
             sell_cards(driver, token, card_id, quantity)
+        else:
+            print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Argument. Type 'help' for more info.\n")
 
 
 CONTEXT_SETTINGS = dict(help_option_names=['--usage'])

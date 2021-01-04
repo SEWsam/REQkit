@@ -58,8 +58,8 @@ def update_driver(task):
 
     latest = requests.get("https://chromedriver.storage.googleapis.com/LATEST_RELEASE").text
     driver_zip = requests.get(f"https://chromedriver.storage.googleapis.com/{latest}/chromedriver_win32.zip").content
-    with open('temp/chromedriver_win32.zip', 'wb') as f:
-        f.write(driver_zip)
+    with open('temp/chromedriver_win32.zip', 'wb') as temp_zip:
+        temp_zip.write(driver_zip)
     driver_zip = 'temp/chromedriver_win32.zip'
     with ZipFile(driver_zip, 'r') as zipObj:
         zipObj.extractall("C:\\bin")
@@ -282,8 +282,9 @@ def main(req_arg, help, username, password):
 
     if help:
         print(
-            f"Usage: reqkit.py [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
-            f"Guardians'.\n\nUse the 'sell' function to sell packs.\nThe REQ Pack Names are:\n{db['docstring']}"
+            f"Usage: reqkit.exe [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
+            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username -p <password> sell')"
+            f"\nThe REQ Pack Names are:\n{db['docstring']}"
         )
         sys.exit()
 
@@ -334,10 +335,10 @@ if __name__ == '__main__':
     with open("resource/logo") as f:
         print(f.read())
 
-    print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
-        f"{Fore.YELLOW}Run 'reqkit.py -h noarg' for help, or 'reqkit.py --usage' for command structure'"
+        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure'"
         f"{Style.RESET_ALL}\n"
     )
 
@@ -374,4 +375,3 @@ if __name__ == '__main__':
         update_driver("installation")
     finally:
         time.sleep(2)
-

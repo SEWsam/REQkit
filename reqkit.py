@@ -5,6 +5,8 @@ Author: Samuel "SEWsam" Wirth
 API Version: 1.3.X-dev
 """
 import json
+from json.decoder import JSONDecodeError
+
 import click
 import requests
 import time
@@ -29,6 +31,8 @@ login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0B
             "&locale=en-us&display=touch&state=https%253a%252f%252fwww.halowaypoint.com%252fen-us "
 
 buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
+
+sell_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/sell"
 
 
 def update():
@@ -61,7 +65,7 @@ def update_driver(task):
         zipObj.extractall("C:\\bin")
 
     print(
-        f"[{Fore.GREEN}+{Style.RESET_ALL}]Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 "
+        f"[{Fore.GREEN}+{Style.RESET_ALL}] Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 "
         f"seconds. "
     )
     time.sleep(1.5)
@@ -113,68 +117,7 @@ def generate_data(pack_name=None, check=False):
     return False
 
 
-CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
-
-
-@click.command(options_metavar="<options>", context_settings=CONTEXT_SETTINGS)
-@click.argument('pack-name', metavar="<REQ Pack Name|noarg>")
-@click.option("--help", "-h", is_flag=True, help="More detailed help. Run 'reqkit.py -h noarg'")
-@click.option(
-    "--username", "-u", metavar="Email",
-    help="The Microsoft/Xbox email associated with your Halo 5 Profile"
-)
-@click.option(
-    "--password", "-p", metavar="Text",
-    help="The Password for the associated Microsoft/Xbox email account."
-)
-def main(pack_name, help, username, password):
-    """
-    Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
-
-    Minimal help display. Run '--help noarg', or '-h noarg' for more info
-    """
-    if help:
-        print(
-            f"Usage: reqkit.py [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
-            f"Guardians'.\n\nUse the 'sell' function to sell packs.\nThe REQ Pack Names are:\n{db['docstring']}"
-        )
-        sys.exit()
-
-    if username is None or password is None:
-        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
-        return
-
-    if not generate_data(pack_name=pack_name, check=True):
-        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Pack Name")
-        return
-
-    print(f"[{mdot}] Logging in to Halo with email '{username}'...")
-    second_try = False
-    while True:
-        try:
-            driver = login(username, password)
-        except selenium.common.exceptions.TimeoutException:
-            print(
-                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
-            return
-
-        print(f"[{mdot}] Verifying login with Xbox...")
-
-        token = get_token(driver)
-        if token != "retry":
-            break
-        else:
-            if not second_try:
-                print(f"[{mdot}] Retrying")
-                second_try = True
-                continue
-            if second_try:
-                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
-                return
-
-    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
-
-    # TODO: Add logic to determine whether a pack is being bought, or packs are being sold
+def buy_pack(driver, token, pack_name):
     data = generate_data(pack_name=pack_name)
     pack_full_name = data[1]
     price = data[2]
@@ -187,7 +130,8 @@ def main(pack_name, help, username, password):
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
+                              'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -215,6 +159,168 @@ def main(pack_name, help, username, password):
             return
         else:
             continue
+
+
+def sell_cards(driver, token, card_id, quantity):
+    reqs = db["reqs"]
+    card = reqs[int(card_id)]
+    card_name = card[0]
+    card_price = card[1]
+    request_data = card[2] + token
+
+    while True:
+        confirm_sell = input(
+            f"[?] {quantity} {card_name}'s will be sold for {card_price} REQ Points each. You will gain "
+            f"{int(card_price) * int(quantity)} REQ Points. Are you sure? (y/n) "
+        )
+
+        if confirm_sell[0] == 'y':
+            print(f"[{mdot}] Selling card(s)...")
+            headers = {
+                'Accept': '*/*',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Request-Id': '|Qk9Nu.R2BZR',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                              'Chrome/87.0.4280.88 Safari/537.36',
+                'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
+            }
+            initial_sale = False
+            for i in range(0, int(quantity)):
+                try:
+                    response = driver.request("POST", sell_url, headers=headers, data=request_data).content.decode()
+                    json_response = json.loads(response)
+
+                    if json_response["State"] is None:
+                        print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success selling REQ!")
+                        initial_sale = True
+
+                except (KeyError, JSONDecodeError):
+                    if not initial_sale:
+                        i = 0
+                    print(
+                        f"\n[{Fore.RED}-{Style.RESET_ALL}] Sell Error. You may have sold all of this REQ. {i} packs "
+                        f"were sucessfully sold. You have gained {i * int(card_price)} REQ Points. Type 'exit' to exit "
+                    )
+                    return
+
+            print(f"\n[{Fore.GREEN}+{Style.RESET_ALL}] Success selling all REQs! Type 'exit' to exit.")
+            return
+        elif confirm_sell[0] == 'n':
+            print(f"[{mdot}] Cancelling. Type 'exit' to exit.")
+            return
+        else:
+            continue
+
+
+def sell_cmdline(driver, token):
+    # TODO: Sell stuff
+    """
+    IDEA: Cmdline for selling. Commands include: 'list', 'find <arg|str>', 'sell <arg|int> <arg|int>'
+        * list: Show a numbered list of all req cards, in order from db.json.
+        * find: Find a card by search term. Code:
+            for index, card in enumerate(cards):
+                if term in card[0]:
+                    print(f"[{index}] {card[0]} - {card[1]} Points")
+        * sell: sell a card by index value in db.json, obtained through 'list' or 'find'
+    """
+    print(f"\n{Fore.YELLOW}Type 'help' for a list of commands.{Style.RESET_ALL}\n")
+    while True:
+        print(f"REQkit Sell Mode: {Fore.GREEN}${Style.RESET_ALL} ", end="")
+        cmd = input().lower()
+        if cmd == "exit":
+            return
+        elif cmd == "list":
+            for index, req in enumerate(db["reqs"]):
+                print(f"[{index}] {req[0]} - {req[1]} Points")
+            continue
+
+        cmd_args = cmd.split(" ", 1)
+
+        if cmd_args[0] == "find":
+            term = str(cmd_args[1]).lower()
+            for index, req in enumerate(db["reqs"]):
+                if term in str(req[0]).lower():
+                    print(f"[{index}] {req[0]} - {req[1]} Points")
+        elif cmd_args[0] == "sell":
+            cmd_args = cmd.split(" ", 2)
+            try:
+                card_id = cmd_args[1]
+                quantity = cmd_args[2]
+            except IndexError:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Argument. Please enter a REQ id, and qunatity to sell.")
+                print("Usage: 'sell <id> <quantity>'\n")
+                continue
+
+            sell_cards(driver, token, card_id, quantity)
+
+
+CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
+
+
+@click.command(options_metavar="<options>", context_settings=CONTEXT_SETTINGS)
+@click.argument('req-arg', metavar="<REQ Pack Name|noarg>")
+@click.option("--help", "-h", is_flag=True, help="More detailed help. Run 'reqkit.py -h noarg'")
+@click.option(
+    "--username", "-u", metavar="Email",
+    help="The Microsoft/Xbox email associated with your Halo 5 Profile"
+)
+@click.option(
+    "--password", "-p", metavar="Text",
+    help="The Password for the associated Microsoft/Xbox email account."
+)
+def main(req_arg, help, username, password):
+    """
+    Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
+
+    Minimal help display. Run '--help noarg', or '-h noarg' for more info
+    """
+
+    if help:
+        print(
+            f"Usage: reqkit.py [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
+            f"Guardians'.\n\nUse the 'sell' function to sell packs.\nThe REQ Pack Names are:\n{db['docstring']}"
+        )
+        sys.exit()
+
+    if username is None or password is None:
+        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
+        return
+    if req_arg != "sell":
+        if not generate_data(pack_name=req_arg, check=True):
+            print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
+            return
+
+    print(f"[{mdot}] Logging in to Halo with email '{username}'...")
+    second_try = False
+    while True:
+        try:
+            driver = login(username, password)
+        except selenium.common.exceptions.TimeoutException:
+            print(
+                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
+            return
+
+        print(f"[{mdot}] Verifying login with Xbox...")
+
+        token = get_token(driver)
+        if token != "retry":
+            break
+        else:
+            if not second_try:
+                print(f"[{mdot}] Retrying")
+                second_try = True
+                continue
+            if second_try:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
+                return
+
+    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
+
+    if req_arg != "sell":
+        buy_pack(driver, token, req_arg)
+    else:
+        sell_cmdline(driver, token)
 
 
 if __name__ == '__main__':
@@ -257,10 +363,11 @@ if __name__ == '__main__':
     try:
         main()
     except selenium.common.exceptions.SessionNotCreatedException:
-        print("Chromedriver update required. Updating now...")
+        print("[!] Chromedriver update required. Updating now...")
         update_driver("update")
     except selenium.common.exceptions.WebDriverException:
-        print("Chromedriver is not installed. Installing now...")
+        print("[!] Chromedriver is not installed. Installing now...")
         update_driver("installation")
+    finally:
+        time.sleep(2)
 
-    time.sleep(2)

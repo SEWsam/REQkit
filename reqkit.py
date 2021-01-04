@@ -214,16 +214,6 @@ def sell_cards(driver, token, card_id, quantity):
 
 
 def sell_cmdline(driver, token):
-    # TODO: Sell stuff
-    """
-    IDEA: Cmdline for selling. Commands include: 'list', 'find <arg|str>', 'sell <arg|int> <arg|int>'
-        * list: Show a numbered list of all req cards, in order from db.json.
-        * find: Find a card by search term. Code:
-            for index, card in enumerate(cards):
-                if term in card[0]:
-                    print(f"[{index}] {card[0]} - {card[1]} Points")
-        * sell: sell a card by index value in db.json, obtained through 'list' or 'find'
-    """
     print(f"\n{Fore.YELLOW}Type 'help' for a list of commands.{Style.RESET_ALL}\n")
     while True:
         print(f"REQkit Sell Mode: {Fore.GREEN}${Style.RESET_ALL} ", end="")
@@ -234,6 +224,14 @@ def sell_cmdline(driver, token):
             for index, req in enumerate(db["reqs"]):
                 print(f"[{index}] {req[0]} - {req[1]} Points")
             continue
+        elif cmd == "help":
+            print(
+                "REQkit Sell Mode Commands:\n"
+                "   * help - Shows this menu\n"
+                "   * list - list all reqs and their IDs\n"
+                "   * find <term> - find a REQ and its ID by search term.\n"
+                "   * sell <id> <quantity> - sell a REQ by its ID, X amount of times."
+            )
 
         cmd_args = cmd.split(" ", 1)
 

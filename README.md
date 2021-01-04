@@ -1,6 +1,6 @@
-# REQkit 1.2.1
+# REQkit 1.3.X
 
 Run REQkit through CMD, or use a shortcut.
->_reqkit.exe --help_ 
+>_reqkit.exe --help norarg_
  
 Run this for more info.

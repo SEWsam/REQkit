@@ -1,5 +1,5 @@
 {
-    "version": "1.3",
+    "version": "1.3.1",
     "docstring": "        * \"bronze\": A bronze REQ Pack.\n        * \"silver\": A Silver REQ Pack.\n        * \"gold\": A Gold REQ Pack\n        * \"hcs\": An HCS Special REQ Pack.\n        * \"xp-boost\": An Arena XP Boost Pack\n        * \"wz-xp-boost\": A Warzone XP Boost Pack",
     "packs": [
         [
@@ -41,152 +41,152 @@
     ],
     "reqs": [
         [
-        "Arena XP Boost",
+        "Common Arena XP Boost",
         "75",
         "RequisitionId=ec1dea62-86cd-4efe-b58a-45e3a236b981&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Gambit: Assist",
+        "Common Gambit: Assist",
         "75",
         "RequisitionId=2ead1dc8-c82a-488b-a0b8-50cee41044be&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Arena RP Boost",
+        "Uncommon Arena RP Boost",
         "100",
         "RequisitionId=5888dc20-d3c1-41ba-9d7e-5baae3992ab2&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Arena XP Boost",
+        "Uncommon Arena XP Boost",
         "100",
         "RequisitionId=1f7bd827-6090-4185-a2bf-7d0e1ac77a09&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Arena XP Jackpot",
+        "Uncommon Arena XP Jackpot",
         "100",
         "RequisitionId=76def815-634a-42cd-b9ca-4c539205b863&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Gambit: Spartan Kills",
+        "Uncommon Gambit: Spartan Kills",
         "100",
         "RequisitionId=63e6f570-4270-42ac-a5f9-50764ca2f737&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Mission: Victory",
+        "Uncommon Mission: Victory",
         "100",
         "RequisitionId=9c03fef6-de32-4f58-a514-7820b254b46f&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Arena RP Boost",
+        "Rare Arena RP Boost",
         "150",
         "RequisitionId=5e801176-52da-4a2d-9229-7a8f18449178&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Arena RP Jackpot",
+        "Rare Arena RP Jackpot",
         "150",
         "RequisitionId=4a917470-da82-42c1-8d46-d02fe4cdfea7&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Arena XP Boost",
+        "Rare Arena XP Boost",
         "150",
         "RequisitionId=49386ddf-723b-4392-9cfd-7ac6a4b3dee6&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Gambit: Medal Count",
+        "Rare Gambit: Medal Count",
         "150",
         "RequisitionId=f4f4be30-fa4f-40f8-90d5-e3a2276caad7&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Arena RP Boost",
+        "Ultra Rare Arena RP Boost",
         "200",
         "RequisitionId=3ec2dd37-06f4-412a-85b8-b1142f303701&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
     [
-        "Mission: Victory",
+        "Ultra Rare Mission: Victory",
         "200",
         "RequisitionId=dbfcc627-6832-43b1-9191-86be3fe49cde&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
     [
-        "Arena RP Boost",
+        "Legendary Arena RP Boost",
         "250",
         "RequisitionId=2b5fc172-4914-437f-a506-19911964907f&ExpectedSellPrice=250&__RequestVerificationToken="
     ],
     [
-        "Arena XP Boost",
+        "Legendary Arena XP Boost",
         "250",
         "RequisitionId=ef6b4dbe-c4fa-4efd-bbd6-88310d775859&ExpectedSellPrice=250&__RequestVerificationToken="
     ],
     [
-        "Warzone XP Boost",
+        "Common Warzone XP Boost",
         "75",
         "RequisitionId=53ab4701-1952-4743-8ff6-116e330dc7ea&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Gambit: Assist",
+        "Uncommon Gambit: Assist",
         "100",
         "RequisitionId=ba59266e-b6cd-4d1f-bd39-ddcc3c5f1a0f&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Mission: Victory",
+        "Uncommon Mission: Victory",
         "100",
         "RequisitionId=1fcdd0b2-a1a4-40f0-88c5-b5398dd0301c&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Warzone RP Boost",
+        "Uncommon Warzone RP Boost",
         "100",
         "RequisitionId=e05df769-06e8-44cd-9b68-88e8f87bfa70&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Warzone XP Boost",
+        "Uncommon Warzone XP Boost",
         "100",
         "RequisitionId=ee3beb20-86c2-4edc-861f-7d0af726753f&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Warzone XP Jackpot",
+        "Uncommon Warzone XP Jackpot",
         "100",
         "RequisitionId=257e3408-c15b-42a0-948b-bd8027ca6d9d&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Gambit: Spartan Kills",
+        "Rare Gambit: Spartan Kills",
         "150",
         "RequisitionId=e00c5ef7-b974-4ab2-a1d5-f8062b48166f&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Warzone RP Boost",
+        "Rare Warzone RP Boost",
         "150",
         "RequisitionId=4de82333-be7e-4739-a4b5-94477340c83c&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Warzone RP Jackpot",
+        "Rare Warzone RP Jackpot",
         "150",
         "RequisitionId=1e3b0db3-9baa-4f78-afe8-4a84546fa2e9&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Warzone XP Boost",
+        "Rare Warzone XP Boost",
         "150",
         "RequisitionId=91bb4cc3-145d-4dc9-8e2b-a7a2dad70b12&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Gambit: Medal Count",
+        "Ultra Rare Gambit: Medal Count",
         "200",
         "RequisitionId=62c9fcb3-1ba0-43cb-8284-91b5c565f4de&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
     [
-        "Mission: Victory",
+        "Ultra Rare Mission: Victory",
         "200",
         "RequisitionId=84892278-d3f5-4fd8-b0df-a740e4e45114&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
     [
-        "Warzone RP Boost",
+        "Ultra Rare Warzone RP Boost",
         "200",
         "RequisitionId=6bff04ed-c831-4ae6-a0be-0c7bfed0fef7&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
     [
-        "Gambit: AI Kills",
+        "Legendary Gambit: AI Kills",
         "250",
         "RequisitionId=7b494b69-d77a-4ce1-934f-44c828feb1fb&ExpectedSellPrice=250&__RequestVerificationToken="
     ],
     [
-        "Warzone RP Boost",
+        "Legendary Warzone RP Boost",
         "250",
         "RequisitionId=414b5d47-29ae-42cf-8796-8fc09f650678&ExpectedSellPrice=250&__RequestVerificationToken="
     ],
@@ -226,7 +226,7 @@
         "RequisitionId=74fec31e-c9b0-40dc-98f7-82b3d5d94efa&ExpectedSellPrice=50&__RequestVerificationToken="
     ],
     [
-        "Closed Fist",
+        "Boltshot (Closed Fist)",
         "75",
         "RequisitionId=65100858-b9ea-425e-ba3a-2cac18ef8c22&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
@@ -316,12 +316,12 @@
         "RequisitionId=f42672b6-e578-4e2c-a6ac-f2c0326ec41e&ExpectedSellPrice=50&__RequestVerificationToken="
     ],
     [
-        "Rain of Oblivion",
+        "Carbine (Rain of Oblivion)",
         "75",
         "RequisitionId=3ccacc28-3e9a-4bdc-8f94-bb706102b798&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Blood of Suban",
+        "Carbine (Blood of Suban)",
         "100",
         "RequisitionId=46277f4d-499d-441d-bf4a-44a5951345a6&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
@@ -331,17 +331,17 @@
         "RequisitionId=a93e3a6d-64f5-4c4d-b8d0-9dcac39f3401&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Ravening Sliver",
+        "Energy Sword (Ravening Sliver)",
         "100",
         "RequisitionId=dde37842-3e4b-4f4f-a4ab-9be067d659b1&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Vorpal Talon",
+        "Energy Sword (Vorpal Talon)",
         "150",
         "RequisitionId=be395318-f442-4d85-9e31-b4aef1b0396b&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Prophets' Bane",
+        "Energy Sword (Prophets' Bane)",
         "200",
         "RequisitionId=03ca3f2a-c2dd-4315-8238-ac6a90b6c970&ExpectedSellPrice=200&__RequestVerificationToken="
     ],
@@ -351,12 +351,12 @@
         "RequisitionId=592489a8-edbe-4a68-b622-07c80a4be0db&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Light of Urs",
+        "Fuel Rod Cannon (Light of Urs)",
         "100",
         "RequisitionId=d9bb0ce2-90cf-4d33-b173-cfc4c5c600a3&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Pool of Radiance",
+        "Fuel Rod Cannon (Pool of Radiance)",
         "150",
         "RequisitionId=1427bb67-138b-4527-9788-3014398d7fb1&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
@@ -421,12 +421,12 @@
         "RequisitionId=d97e51e5-a305-42ad-b142-0121823aa555&ExpectedSellPrice=75&__RequestVerificationToken="
     ],
     [
-        "Typhon",
+        "Hydra Launcher (Typhon)",
         "100",
         "RequisitionId=8fcd8fb0-b3cd-4eab-9d67-767a933cda52&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "Echidna",
+        "Hydra Laucher (Echidna)",
         "150",
         "RequisitionId=11c60ec0-16eb-4ebc-a596-4ae755a7ab76&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
@@ -436,12 +436,12 @@
         "RequisitionId=d5232e38-2e55-47b7-b72e-c2b41f93ffbf&ExpectedSellPrice=100&__RequestVerificationToken="
     ],
     [
-        "River of Light",
+        "Incineration Cannon (River of Light)",
         "150",
         "RequisitionId=425ec88e-daae-4e45-ae18-57ba36e12f07&ExpectedSellPrice=150&__RequestVerificationToken="
     ],
     [
-        "Heartseeker",
+        "Incineration Cannon (Heartseeker)",
         "200",
         "RequisitionId=0152759a-a58e-4033-87c4-f90075319c72&ExpectedSellPrice=200&__RequestVerificationToken="
     ],

@@ -240,11 +240,15 @@ def sell_cmdline(driver, token):
         cmd_args = cmd.split(" ", 1)
 
         if cmd_args[0] == "find":
-            term = str(cmd_args[1]).lower()
-            for index, req in enumerate(db["reqs"]):
-                if term in str(req[0]).lower():
-                    print(f"[{index}] {req[0]} - {req[1]} Points")
-            print()
+            try:
+                term = str(cmd_args[1]).lower()
+                for index, req in enumerate(db["reqs"]):
+                    if term in str(req[0]).lower():
+                        print(f"[{index}] {req[0]} - {req[1]} Points")
+                print()
+            except IndexError:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Argument. Please enter a search term.")
+                print("Usage: 'find <term>'\n")
         elif cmd_args[0] == "sell":
             cmd_args = cmd.split(" ", 2)
             try:

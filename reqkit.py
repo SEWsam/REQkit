@@ -96,8 +96,8 @@ def login(user, passwd):
 
 
 def get_token(driver):
-    store_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store"
-    driver.request("GET", store_url)
+    verify_url = "https://account.microsoft.com/"
+    driver.request("GET", verify_url)
     try:
         token_element = driver.find_element_by_name("__RequestVerificationToken")
         return token_element.get_attribute("value")

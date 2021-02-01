@@ -2,8 +2,9 @@
 Copyright (c) 2020 - 2021 Samuel Wirth
 
 Author: Samuel "SEWsam" Wirth
-API Version: 1.3.X-dev
+API Version: 1.4.X-dev
 """
+# TODO: Remove another dev tag
 import json
 from json.decoder import JSONDecodeError
 
@@ -334,15 +335,15 @@ if __name__ == '__main__':
 
     with open("resource/logo") as f:
         print(f.read())
-
-    print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
+    # TODO: Remove dev tag
+    print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
         f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure'"
         f"{Style.RESET_ALL}\n"
     )
 
-    remote_db = requests.get("https://sewsam.github.io/download/db.json").json()
+    remote_db = requests.get("https://sewsam.github.io/download/4x-db.json").json()
     remote_ver = remote_db["version"].split(".")
     local_ver = db["version"].split(".")
 

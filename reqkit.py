@@ -339,7 +339,7 @@ if __name__ == '__main__':
     print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
-        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure'"
+        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure"
         f"{Style.RESET_ALL}\n"
     )
 

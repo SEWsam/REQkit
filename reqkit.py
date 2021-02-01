@@ -284,7 +284,7 @@ def main(req_arg, help, username, password):
     if help:
         print(
             f"Usage: reqkit.exe [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
-            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username -p <password> sell')"
+            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username> -p <password> sell')"
             f"\nThe REQ Pack Names are:\n{db['docstring']}"
         )
         sys.exit()

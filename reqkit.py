@@ -166,8 +166,7 @@ def buy_pack(driver, token, pack_name):
 
 
 def sell_cards(driver, token, card_id, quantity):
-    reqs = db["reqs"]
-    card = reqs[int(card_id)]
+    card = db["reqs"][int(card_id)]
     card_name = card[0]
     card_price = card[1]
     request_data = card[2] + token

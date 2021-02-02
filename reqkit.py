@@ -27,7 +27,9 @@ from seleniumrequests import Chrome
 init(convert=True)
 mdot = u'\u00b7'
 
-login_url = "https://login.live.com/login.srf"
+login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
+            ".offline_access&response_type=code&redirect_uri=https:%2f%2fwww.halowaypoint.com%2fauth%2fcallback" \
+            "&locale=en-us&display=touch&state=https%253a%252f%252fwww.halowaypoint.com%252fen-us "
 
 buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
 

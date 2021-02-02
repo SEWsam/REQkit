@@ -61,8 +61,9 @@ def update_driver(task):
         temp_zip.write(driver_zip)
     driver_zip = 'temp/chromedriver_win32.zip'
     with ZipFile(driver_zip, 'r') as zipObj:
-        zipObj.extractall("C:\\bin")
+        zipObj.extractall("C:\\bin")  # TODO: Add Var for webdriver location
 
+    # TODO: Remove this, allow this to be custom inserted
     print(
         f"[{Fore.GREEN}+{Style.RESET_ALL}] Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 "
         f"seconds. "
@@ -71,10 +72,11 @@ def update_driver(task):
 
 
 def login(user, passwd):
+    # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)
+    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)  # TODO: Add var for webdriver location
     driver.get(login_url)
 
     un_field = (By.ID, "i0116")
@@ -94,14 +96,17 @@ def login(user, passwd):
 
 
 def get_token(driver):
+    # Get authentication for account actions, this also checks if the user ever actually logged in (Correct password)
     verify_url = "https://account.microsoft.com/"
     driver.request("GET", verify_url)
     try:
         token_element = driver.find_element_by_name("__RequestVerificationToken")
         return token_element.get_attribute("value")
     except selenium.common.exceptions.NoSuchElementException:
+        # Remove this, move it below.
         print(
             f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
+        # Keep this. Message above should be removed and should be a response to 'retry' being returned.
         return "retry"
 
 

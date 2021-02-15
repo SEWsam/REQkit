@@ -5,23 +5,21 @@ Author: Samuel "SEWsam" Wirth
 API Version: 1.3.X-dev
 """
 import json
+import os
+import sys
+import time
 from json.decoder import JSONDecodeError
+from zipfile import ZipFile
 
 import click
 import requests
-import time
-import os
-import sys
-
 import selenium.common.exceptions
 from colorama import Fore, Style, init
-
-from zipfile import ZipFile
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
-from seleniumrequests import Chrome
+from seleniumrequests import Chrome  # noqa
 
 init(convert=True)
 mdot = u'\u00b7'

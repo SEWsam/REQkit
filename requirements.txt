@@ -1,0 +1,5 @@
+click~=7.1.2
+requests~=2.25.1
+selenium~=3.141.0
+colorama~=0.4.4
+selenium-requests~=1.3

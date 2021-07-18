@@ -1,10 +1,9 @@
 """
-Copyright (c) 2020 - 2021 Samuel Wirth
+Copyright (c) 2020 - 2021 SEWsam
 
-Author: Samuel "SEWsam" Wirth
-API Version: 1.4.X-dev
+Author: SEWsam
+Source version: 1.4
 """
-# TODO: Remove another dev tag
 import json
 from json.decoder import JSONDecodeError
 
@@ -25,7 +24,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from seleniumrequests import Chrome
 
 init(convert=True)
-mdot = u'\u00b7'
+dot = u'\u00b7'
 
 login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
             ".offline_access&response_type=code&redirect_uri=https:%2f%2fwww.halowaypoint.com%2fauth%2fcallback" \
@@ -132,7 +131,7 @@ def buy_pack(driver, token, pack_name):
     while True:
         confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
         if confirm_buy[0] == 'y':
-            print(f"[{mdot}] Buying pack...")
+            print(f"[{dot}] Buying pack...")
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
@@ -161,7 +160,7 @@ def buy_pack(driver, token, pack_name):
                     print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
                 break
         elif confirm_buy[0] == 'n':
-            print(f"[{mdot}] Exiting...")
+            print(f"[{dot}] Exiting...")
             return
         else:
             continue
@@ -180,7 +179,7 @@ def sell_cards(driver, token, card_id, quantity):
         )
 
         if confirm_sell[0] == 'y':
-            print(f"[{mdot}] Selling card(s)...")
+            print(f"[{dot}] Selling card(s)...")
             headers = {
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -213,7 +212,7 @@ def sell_cards(driver, token, card_id, quantity):
             print(f"\n[{Fore.GREEN}+{Style.RESET_ALL}] Success selling all REQs! Type 'exit' to exit.\n")
             return
         elif confirm_sell[0] == 'n':
-            print(f"[{mdot}] Cancelling. Type 'exit' to exit.")
+            print(f"[{dot}] Cancelling. Type 'exit' to exit.")
             return
         else:
             continue
@@ -305,7 +304,7 @@ def main(req_arg, help, username, password):
             print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
             return
 
-    print(f"[{mdot}] Logging in to Halo with email '{username}'...")
+    print(f"[{dot}] Logging in to Halo with email '{username}'...")
     second_try = False
     while True:
         try:
@@ -315,14 +314,14 @@ def main(req_arg, help, username, password):
                 f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
             return
 
-        print(f"[{mdot}] Verifying login with Xbox...")
+        print(f"[{dot}] Verifying login with Xbox...")
 
         token = get_token(driver)
         if token != "retry":
             break
         else:
             if not second_try:
-                print(f"[{mdot}] Retrying")
+                print(f"[{dot}] Retrying")
                 second_try = True
                 continue
             if second_try:
@@ -343,8 +342,7 @@ if __name__ == '__main__':
 
     with open("resource/logo") as f:
         print(f.read())
-    # TODO: Remove dev tag
-    print(f"{Fore.CYAN}REQkit Version {db['version']}-dev{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
         f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure"

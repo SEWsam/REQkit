@@ -1,8 +1,8 @@
 """
-Copyright (c) 2020 - 2021 Samuel Wirth
+Copyright (c) 2020 - 2021 SEWsam
 
-Author: Samuel "SEWsam" Wirth
-API Version: 1.3.X-dev
+Author: SEWsam
+Source version: 1.4
 """
 import json
 import os
@@ -22,7 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from seleniumrequests import Chrome  # noqa
 
 init(convert=True)
-mdot = u'\u00b7'
+dot = u'\u00b7'
 
 login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
             ".offline_access&response_type=code&redirect_uri=https:%2f%2fwww.halowaypoint.com%2fauth%2fcallback" \
@@ -60,8 +60,9 @@ def update_driver(task):
         temp_zip.write(driver_zip)
     driver_zip = 'temp/chromedriver_win32.zip'
     with ZipFile(driver_zip, 'r') as zipObj:
-        zipObj.extractall("C:\\bin")
+        zipObj.extractall("C:\\bin")  # TODO: Add Var for webdriver location
 
+    # TODO: Remove this, allow this to be custom inserted
     print(
         f"[{Fore.GREEN}+{Style.RESET_ALL}] Chromedriver {task} finished. Please run REQkit again. Auto-Exiting in 3 "
         f"seconds. "
@@ -70,10 +71,11 @@ def update_driver(task):
 
 
 def login(user, passwd):
+    # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)
+    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)  # TODO: Add var for webdriver location
     driver.get(login_url)
 
     un_field = (By.ID, "i0116")
@@ -93,14 +95,17 @@ def login(user, passwd):
 
 
 def get_token(driver):
-    store_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store"
-    driver.request("GET", store_url)
+    # Get authentication for account actions, this also checks if the user ever actually logged in (Correct password)
+    verify_url = "https://account.microsoft.com/"
+    driver.request("GET", verify_url)
     try:
         token_element = driver.find_element_by_name("__RequestVerificationToken")
         return token_element.get_attribute("value")
     except selenium.common.exceptions.NoSuchElementException:
+        # Remove this, move it below.
         print(
             f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
+        # Keep this. Message above should be removed and should be a response to 'retry' being returned.
         return "retry"
 
 
@@ -124,7 +129,7 @@ def buy_pack(driver, token, pack_name):
     while True:
         confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
         if confirm_buy[0] == 'y':
-            print(f"[{mdot}] Buying pack...")
+            print(f"[{dot}] Buying pack...")
             headers = {
                 'Connection': 'keep-alive',
                 'Origin': 'https://www.halowaypoint.com',
@@ -153,15 +158,14 @@ def buy_pack(driver, token, pack_name):
                     print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
                 break
         elif confirm_buy[0] == 'n':
-            print(f"[{mdot}] Exiting...")
+            print(f"[{dot}] Exiting...")
             return
         else:
             continue
 
 
 def sell_cards(driver, token, card_id, quantity):
-    reqs = db["reqs"]
-    card = reqs[int(card_id)]
+    card = db["reqs"][int(card_id)]
     card_name = card[0]
     card_price = card[1]
     request_data = card[2] + token
@@ -173,7 +177,7 @@ def sell_cards(driver, token, card_id, quantity):
         )
 
         if confirm_sell[0] == 'y':
-            print(f"[{mdot}] Selling card(s)...")
+            print(f"[{dot}] Selling card(s)...")
             headers = {
                 'Accept': '*/*',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -206,7 +210,7 @@ def sell_cards(driver, token, card_id, quantity):
             print(f"\n[{Fore.GREEN}+{Style.RESET_ALL}] Success selling all REQs! Type 'exit' to exit.\n")
             return
         elif confirm_sell[0] == 'n':
-            print(f"[{mdot}] Cancelling. Type 'exit' to exit.")
+            print(f"[{dot}] Cancelling. Type 'exit' to exit.")
             return
         else:
             continue
@@ -237,11 +241,15 @@ def sell_cmdline(driver, token):
         cmd_args = cmd.split(" ", 1)
 
         if cmd_args[0] == "find":
-            term = str(cmd_args[1]).lower()
-            for index, req in enumerate(db["reqs"]):
-                if term in str(req[0]).lower():
-                    print(f"[{index}] {req[0]} - {req[1]} Points")
-            print()
+            try:
+                term = str(cmd_args[1]).lower()
+                for index, req in enumerate(db["reqs"]):
+                    if term in str(req[0]).lower():
+                        print(f"[{index}] {req[0]} - {req[1]} Points")
+                print()
+            except IndexError:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Argument. Please enter a search term.")
+                print("Usage: 'find <term>'\n")
         elif cmd_args[0] == "sell":
             cmd_args = cmd.split(" ", 2)
             try:
@@ -281,7 +289,7 @@ def main(req_arg, help, username, password):
     if help:
         print(
             f"Usage: reqkit.exe [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
-            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username -p <password> sell')"
+            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username> -p <password> sell')"
             f"\nThe REQ Pack Names are:\n{db['docstring']}"
         )
         sys.exit()
@@ -294,7 +302,7 @@ def main(req_arg, help, username, password):
             print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
             return
 
-    print(f"[{mdot}] Logging in to Halo with email '{username}'...")
+    print(f"[{dot}] Logging in to Halo with email '{username}'...")
     second_try = False
     while True:
         try:
@@ -304,14 +312,14 @@ def main(req_arg, help, username, password):
                 f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
             return
 
-        print(f"[{mdot}] Verifying login with Xbox...")
+        print(f"[{dot}] Verifying login with Xbox...")
 
         token = get_token(driver)
         if token != "retry":
             break
         else:
             if not second_try:
-                print(f"[{mdot}] Retrying")
+                print(f"[{dot}] Retrying")
                 second_try = True
                 continue
             if second_try:
@@ -332,15 +340,14 @@ if __name__ == '__main__':
 
     with open("resource/logo") as f:
         print(f.read())
-
     print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
-        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure'"
+        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure"
         f"{Style.RESET_ALL}\n"
     )
 
-    remote_db = requests.get("https://sewsam.github.io/download/db.json").json()
+    remote_db = requests.get("https://sewsam.github.io/download/4x-db.json").json()
     remote_ver = remote_db["version"].split(".")
     local_ver = db["version"].split(".")
 

@@ -8,6 +8,7 @@ import json
 import os
 import sys
 import time
+import platform
 from typing import Union
 from json.decoder import JSONDecodeError
 from zipfile import ZipFile
@@ -53,7 +54,7 @@ class REQStore:
 
     def login(self, username, password):
         # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
-        self.driver.get(login_url)
+        self.driver.get(self.login_url)
 
         un_field = (By.ID, "i0116")
         pw_field = (By.ID, "i0118")
@@ -125,12 +126,25 @@ def update_driver(task):
     except FileExistsError:
         pass
 
+    dl_platform: str = None
     latest = requests.get("https://chromedriver.storage.googleapis.com/LATEST_RELEASE").text
-    driver_zip = requests.get(f"https://chromedriver.storage.googleapis.com/{latest}/chromedriver_win32.zip").content
-    with open('temp/chromedriver_win32.zip', 'wb') as temp_zip:
+    if platform.system() == "Linux":
+        # once again, proof i've switched around. linux must be the first condition. (writing this on arch btw)
+        dl_platform = "linux64"
+    elif platform.system() == "Windows":
+        dl_platform = "win64"
+    else:
+        print("uhhh fuck, how do i figure out if it's an m1 mac?")
+        sys.exit(1)
+
+    driver_zip = requests.get(f"https://chromedriver.storage.googleapis.com/{latest}/chromedriver_{dl_platform}.zip").content
+
+    with open('temp/chromedriver_' + dl_platform + '.zip', 'wb') as temp_zip:
         temp_zip.write(driver_zip)
-    driver_zip = 'temp/chromedriver_win32.zip'
+
+    driver_zip = f'temp/chromedriver_{dl_platform}_.zip'
     with ZipFile(driver_zip, 'r') as zipObj:
+        # i'll finish this tomorrow. it's 3am. i need to go to bed.
         zipObj.extractall("C:\\bin")  # TODO: Add Var for webdriver location
 
     # TODO: Remove this, allow this to be custom inserted
@@ -141,41 +155,14 @@ def update_driver(task):
     time.sleep(1.5)
 
 
-def query_pack(pack_name: str = None, get_data=True) -> Union[dict, bool]:
+def query_pack(pack_name: str = None) -> Union[dict, bool]:
     for pack in db["packs"]:
         if pack[0] == pack_name:
-            if get_data:
-                return pack
-            else:
-                return True
+            return pack
 
     return False
 
 
-def buy_pack(ctx, pack_name):
-    data = query_pack(pack_name=pack_name)
-    pack_full_name = data[1]
-    price = data[2]
-    request_data = data[3]
-
-    while True:
-        confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
-        if confirm_buy[0] == 'y':
-            print(f"[{dot}] Buying pack...")
-            buy_response = ctx.obj.buy_request(request_data)
-            try:
-                if buy_response["State"] is None:
-                    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
-                break
-            except KeyError:
-                if buy_response["Message"] == "You do not have enough credits to purchase this":
-                    print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
-                break
-        elif confirm_buy[0] == 'n':
-            print(f"[{dot}] Exiting...")
-            return
-        else:
-            continue
 
 
 def sell_cards(driver, token, card_id, quantity):
@@ -326,19 +313,66 @@ def cli(ctx, token):  # TODO: add token to ctx.obj {}
         else:
             print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Command. Type 'help' for more info.\n")
 
+@main.command()
+@click.argument('req-pack', metavar="<REQ Pack Name>")
+@click.pass_context
+def buy_pack(ctx, req_pack):
+    data = query_pack(pack_name=req_pack)
+    if not data:
+        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid REQ Pack name.")
+        sys.exit(1)
+
+    pack_full_name = data[1]
+    price = data[2]
+    request_data = data[3]
+
+    while True:
+        confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
+        if confirm_buy[0] == 'y':
+            print(f"[{dot}] Buying pack...")
+            buy_response = ctx.obj.buy_request(request_data)
+            try:
+                if buy_response["State"] is None:
+                    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
+                break
+            except KeyError:
+                if buy_response["Message"] == "You do not have enough credits to purchase this":
+                    print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
+                break
+        elif confirm_buy[0] == 'n':
+            print(f"[{dot}] Exiting...")
+            return
+        else:
+            continue
+
 
 if __name__ == '__main__':
     with open("resource/db.json") as f:
         db = json.load(f)
 
+    if len(sys.argv) > 1 and sys.argv[1] == "--help":
+        #TODO: change this name to something other than docstring
+        print(
+            f"USAGE: {sys.argv[0]} --username <username> --password <password> (cli|buy|sell) [OPTIONS] ...\n"
+            f"Run '{sys.argv[0]} (COMMAND) --help' for help with each command.\n"
+            f"\n"
+            f"OPTIONS:\n"
+            f"    -u, --username    The username for the Xbox/MS Account you play Halo 5 with.  (REQUIRED)\n"
+            f"    -p, --password    The password for the Xbox/MS Account used.                  (REQUIRED)\n"
+            f"        --help        Show this menu.                                                       \n"
+            f"\n"
+            f"PACK NAMES:\n"
+            f"{db['docstring']}\n"
+        )
+        sys.exit(0)
+
     with open("resource/logo") as f:
         print(f.read())
 
     print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
-    print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}A tool for managing REQ Packs using the Halo 5 API{Style.RESET_ALL}")
     print(
-        f"{Fore.YELLOW}Run 'reqkit.exe -h noarg' for help, or 'reqkit.exe --usage' for command structure"
-        f"{Style.RESET_ALL}\n"
+        f"{Fore.YELLOW}Run '{sys.argv[0]}' --help' for help.{Style.RESET_ALL}\n"
     )
 
     remote_db = requests.get("https://sewsam.github.io/download/db.json").json()
@@ -364,13 +398,17 @@ if __name__ == '__main__':
         except IndexError:
             pass
 
-    try:
-        main(obj=REQStore())
-    except selenium.common.exceptions.SessionNotCreatedException:
-        print("[!] Chromedriver update required. Updating now...")
-        update_driver("update")
-    except selenium.common.exceptions.WebDriverException:
-        print("[!] Chromedriver is not installed. Installing now...")
-        update_driver("installation")
-    finally:
-        time.sleep(2)
+    while True:
+        try:
+            main(obj=REQStore())
+            break
+        except selenium.common.exceptions.SessionNotCreatedException:
+            print("[!] Chromedriver update required. Updating now...")
+            update_driver("update")
+            continue
+        except selenium.common.exceptions.WebDriverException:
+            print("[!] Chromedriver is not installed. Installing now...")
+            update_driver("installation")
+            continue
+        finally:
+            time.sleep(2)

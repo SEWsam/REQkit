@@ -1,5 +1,5 @@
 {
-    "version": "1.4",
+    "version": "1.3.4.0",
     "docstring": "        * \"bronze\": A bronze REQ Pack.\n        * \"silver\": A Silver REQ Pack.\n        * \"gold\": A Gold REQ Pack\n        * \"hcs\": An HCS Special REQ Pack.\n        * \"xp-boost\": An Arena XP Boost Pack\n        * \"wz-xp-boost\": A Warzone XP Boost Pack",
     "packs": [
         [
@@ -41,1084 +41,1084 @@
     ],
     "reqs": [
         [
-        "Common Arena XP Boost",
-        "75",
-        "RequisitionId=ec1dea62-86cd-4efe-b58a-45e3a236b981&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Common Gambit: Assist",
-        "75",
-        "RequisitionId=2ead1dc8-c82a-488b-a0b8-50cee41044be&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Arena RP Boost",
-        "100",
-        "RequisitionId=5888dc20-d3c1-41ba-9d7e-5baae3992ab2&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Arena XP Boost",
-        "100",
-        "RequisitionId=1f7bd827-6090-4185-a2bf-7d0e1ac77a09&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Arena XP Jackpot",
-        "100",
-        "RequisitionId=76def815-634a-42cd-b9ca-4c539205b863&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Gambit: Spartan Kills",
-        "100",
-        "RequisitionId=63e6f570-4270-42ac-a5f9-50764ca2f737&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Mission: Victory",
-        "100",
-        "RequisitionId=9c03fef6-de32-4f58-a514-7820b254b46f&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Rare Arena RP Boost",
-        "150",
-        "RequisitionId=5e801176-52da-4a2d-9229-7a8f18449178&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Arena RP Jackpot",
-        "150",
-        "RequisitionId=4a917470-da82-42c1-8d46-d02fe4cdfea7&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Arena XP Boost",
-        "150",
-        "RequisitionId=49386ddf-723b-4392-9cfd-7ac6a4b3dee6&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Gambit: Medal Count",
-        "150",
-        "RequisitionId=f4f4be30-fa4f-40f8-90d5-e3a2276caad7&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Ultra Rare Arena RP Boost",
-        "200",
-        "RequisitionId=3ec2dd37-06f4-412a-85b8-b1142f303701&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Ultra Rare Mission: Victory",
-        "200",
-        "RequisitionId=dbfcc627-6832-43b1-9191-86be3fe49cde&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Legendary Arena RP Boost",
-        "250",
-        "RequisitionId=2b5fc172-4914-437f-a506-19911964907f&ExpectedSellPrice=250&__RequestVerificationToken="
-    ],
-    [
-        "Legendary Arena XP Boost",
-        "250",
-        "RequisitionId=ef6b4dbe-c4fa-4efd-bbd6-88310d775859&ExpectedSellPrice=250&__RequestVerificationToken="
-    ],
-    [
-        "Common Warzone XP Boost",
-        "75",
-        "RequisitionId=53ab4701-1952-4743-8ff6-116e330dc7ea&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Gambit: Assist",
-        "100",
-        "RequisitionId=ba59266e-b6cd-4d1f-bd39-ddcc3c5f1a0f&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Mission: Victory",
-        "100",
-        "RequisitionId=1fcdd0b2-a1a4-40f0-88c5-b5398dd0301c&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Warzone RP Boost",
-        "100",
-        "RequisitionId=e05df769-06e8-44cd-9b68-88e8f87bfa70&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Warzone XP Boost",
-        "100",
-        "RequisitionId=ee3beb20-86c2-4edc-861f-7d0af726753f&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Uncommon Warzone XP Jackpot",
-        "100",
-        "RequisitionId=257e3408-c15b-42a0-948b-bd8027ca6d9d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Rare Gambit: Spartan Kills",
-        "150",
-        "RequisitionId=e00c5ef7-b974-4ab2-a1d5-f8062b48166f&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Warzone RP Boost",
-        "150",
-        "RequisitionId=4de82333-be7e-4739-a4b5-94477340c83c&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Warzone RP Jackpot",
-        "150",
-        "RequisitionId=1e3b0db3-9baa-4f78-afe8-4a84546fa2e9&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Rare Warzone XP Boost",
-        "150",
-        "RequisitionId=91bb4cc3-145d-4dc9-8e2b-a7a2dad70b12&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Ultra Rare Gambit: Medal Count",
-        "200",
-        "RequisitionId=62c9fcb3-1ba0-43cb-8284-91b5c565f4de&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Ultra Rare Mission: Victory",
-        "200",
-        "RequisitionId=84892278-d3f5-4fd8-b0df-a740e4e45114&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Ultra Rare Warzone RP Boost",
-        "200",
-        "RequisitionId=6bff04ed-c831-4ae6-a0be-0c7bfed0fef7&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Legendary Gambit: AI Kills",
-        "250",
-        "RequisitionId=7b494b69-d77a-4ce1-934f-44c828feb1fb&ExpectedSellPrice=250&__RequestVerificationToken="
-    ],
-    [
-        "Legendary Warzone RP Boost",
-        "250",
-        "RequisitionId=414b5d47-29ae-42cf-8796-8fc09f650678&ExpectedSellPrice=250&__RequestVerificationToken="
-    ],
-    [
-        "Beam Rifle",
-        "100",
-        "RequisitionId=e1047da5-2880-4071-8e8d-9fecd5cb4f3d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Sword of the Faithful",
-        "150",
-        "RequisitionId=e2f5c12b-072f-45d8-ab0b-699691337627&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Krith's Left Hand",
-        "200",
-        "RequisitionId=698f58e5-79e3-4529-a838-b30cfea60ad7&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Binary Rifle",
-        "150",
-        "RequisitionId=19ee4319-7c28-4166-938b-f98feebba714&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Retina of the Mind's Eye",
-        "150",
-        "RequisitionId=1e4a934b-f469-4f19-8eae-5d2062680571&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Twin Jewels of Maethrillian",
-        "200",
-        "RequisitionId=afced458-47bb-4662-97d5-d372b531b420&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Boltshot",
-        "50",
-        "RequisitionId=74fec31e-c9b0-40dc-98f7-82b3d5d94efa&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Boltshot (Closed Fist)",
-        "75",
-        "RequisitionId=65100858-b9ea-425e-ba3a-2cac18ef8c22&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Open Hand",
-        "100",
-        "RequisitionId=9fa4e8cc-5014-43df-8010-c4b97b8d523d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Brute Plasma Rifle",
-        "75",
-        "RequisitionId=5c496bd0-3a4f-4e35-9a93-55f91408ffa9&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Sorrow of Teash",
-        "100",
-        "RequisitionId=622e8d8d-c068-4d62-a773-eab47d6ee8b5&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Scale of Soirapt",
-        "150",
-        "RequisitionId=9ad8e95a-747f-4807-89a8-1a475f4210ee&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Banshee",
-        "100",
-        "RequisitionId=4a0fae1b-4f36-4848-9bab-bb593e4a6a8f&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Sword Banshee",
-        "100",
-        "RequisitionId=2f9ecd8f-ff80-494d-9005-96c557732877&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Banshee Ultra",
-        "150",
-        "RequisitionId=c6be0247-3dc5-4995-99d3-f1002bf4d867&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "TEMPLE BANSHEE",
-        "150",
-        "RequisitionId=3bf3e0ff-fe4f-4f80-84bc-28b56c1f71a9&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Corp Gauss Warthog",
-        "150",
-        "RequisitionId=0c4fdcd4-ae67-499e-b800-c87d4c18185c&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Gauss Warthog",
-        "150",
-        "RequisitionId=c65ff5e1-5c86-42e0-9aae-b5c00e7ba124&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "ONI Gauss Warthog",
-        "200",
-        "RequisitionId=267ea7b6-812c-474b-ba53-6aeab3f78885&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Gauss Warthog",
-        "200",
-        "RequisitionId=483e7369-05fc-43d9-b2f6-b0d6ad3e38bd&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Urban Gauss Warthog",
-        "200",
-        "RequisitionId=1977d1df-5118-47f6-8f2f-a98f8820e0a9&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Gauss Warthog",
-        "200",
-        "RequisitionId=45c59965-62af-4288-9c0c-fef6730608fe&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Ghost",
-        "75",
-        "RequisitionId=06408e4d-9442-4c61-b722-8082f7a73563&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Sword Ghost",
-        "75",
-        "RequisitionId=9cb7a100-a23b-4112-b05f-9644f32ed405&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Carbine",
-        "50",
-        "RequisitionId=f42672b6-e578-4e2c-a6ac-f2c0326ec41e&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Carbine (Rain of Oblivion)",
-        "75",
-        "RequisitionId=3ccacc28-3e9a-4bdc-8f94-bb706102b798&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Carbine (Blood of Suban)",
-        "100",
-        "RequisitionId=46277f4d-499d-441d-bf4a-44a5951345a6&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Energy Sword",
-        "75",
-        "RequisitionId=a93e3a6d-64f5-4c4d-b8d0-9dcac39f3401&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Energy Sword (Ravening Sliver)",
-        "100",
-        "RequisitionId=dde37842-3e4b-4f4f-a4ab-9be067d659b1&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Energy Sword (Vorpal Talon)",
-        "150",
-        "RequisitionId=be395318-f442-4d85-9e31-b4aef1b0396b&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Energy Sword (Prophets' Bane)",
-        "200",
-        "RequisitionId=03ca3f2a-c2dd-4315-8238-ac6a90b6c970&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Fuel Rod Cannon",
-        "75",
-        "RequisitionId=592489a8-edbe-4a68-b622-07c80a4be0db&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Fuel Rod Cannon (Light of Urs)",
-        "100",
-        "RequisitionId=d9bb0ce2-90cf-4d33-b173-cfc4c5c600a3&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Fuel Rod Cannon (Pool of Radiance)",
-        "150",
-        "RequisitionId=1427bb67-138b-4527-9788-3014398d7fb1&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Gauss Turret",
-        "200",
-        "RequisitionId=48e94634-c9f0-4acf-9dfa-3b7b4bad43f5&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "ONI Gauss Turret",
-        "200",
-        "RequisitionId=fb205987-ecdc-4957-87ac-dea93c0c4372&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Corpsemaker",
-        "100",
-        "RequisitionId=7a8e3278-a4a0-431e-9005-28a434d023cc&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Gravity Hammer",
-        "100",
-        "RequisitionId=06106fff-7cd5-48e2-8573-4dbfce71c8f2&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Grinder",
-        "150",
-        "RequisitionId=81186db0-444c-4214-b756-610c3c55904e&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Tartarus' Gavel",
-        "200",
-        "RequisitionId=913ae127-131d-40ad-a1b8-f25b1d23ebd3&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Halo 2 Beam Rifle",
-        "100",
-        "RequisitionId=e60e4e8b-5501-46d1-80cc-8f1368f654df&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Halo 2 Beam Rifle Alpha",
-        "150",
-        "RequisitionId=1816967b-26a6-4555-acde-2c104abfe851&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Halo 2 Beam Rifle Delta",
-        "200",
-        "RequisitionId=19d4cff3-1d9d-4936-92ca-6bf2c2414391&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Wicked Grasp",
-        "100",
-        "RequisitionId=c6d346df-3632-4a26-90ab-5efd8f180d62&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Berserker's Claw",
-        "150",
-        "RequisitionId=3974cfbf-e5a0-473d-bd17-6d2171b93f56&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Hydra Launcher",
-        "75",
-        "RequisitionId=d97e51e5-a305-42ad-b142-0121823aa555&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Hydra Launcher (Typhon)",
-        "100",
-        "RequisitionId=8fcd8fb0-b3cd-4eab-9d67-767a933cda52&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Hydra Laucher (Echidna)",
-        "150",
-        "RequisitionId=11c60ec0-16eb-4ebc-a596-4ae755a7ab76&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Incineration Cannon",
-        "100",
-        "RequisitionId=d5232e38-2e55-47b7-b72e-c2b41f93ffbf&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Incineration Cannon (River of Light)",
-        "150",
-        "RequisitionId=425ec88e-daae-4e45-ae18-57ba36e12f07&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Incineration Cannon (Heartseeker)",
-        "200",
-        "RequisitionId=0152759a-a58e-4033-87c4-f90075319c72&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "LightRifle",
-        "100",
-        "RequisitionId=aa673098-1abf-49d1-aee5-0717badda29f&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Barbed Lance",
-        "150",
-        "RequisitionId=53d939ad-703d-4a54-84ea-8167f51cd54a&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Dying Star",
-        "200",
-        "RequisitionId=89e4d22d-3389-4ca4-85cd-f6f494009d1e&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Whispered Truth",
-        "150",
-        "RequisitionId=b426c48a-785b-4f97-95f6-d33f981a08b0&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Halo: Combat Evolved Pistol",
-        "200",
-        "RequisitionId=3c75909d-c858-44a5-8294-b1cc088531f4&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Needler",
-        "50",
-        "RequisitionId=70477c8f-918f-4375-87de-7eaa2243deb7&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Hailstorm",
-        "75",
-        "RequisitionId=e35c7d82-42bd-4ef9-a1d5-a625994aa1b0&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Talon of the Lost",
-        "100",
-        "RequisitionId=7944b113-0662-4e08-8cc4-096e0a4042a2&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Plasma Caster",
-        "75",
-        "RequisitionId=9cdc88b9-f514-4721-b1d3-8684b75a282f&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Scourge of Fire",
-        "100",
-        "RequisitionId=2cef416f-6c14-4bb0-9524-e03628e34084&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "White Scar",
-        "150",
-        "RequisitionId=69472de1-6af2-4851-8912-be2f9204bb5e&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Plasma Pistol",
-        "50",
-        "RequisitionId=56853613-e098-4ace-9717-80708663b870&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Spitfire",
-        "75",
-        "RequisitionId=a0a0b345-cc6a-4072-82bd-ba18de00bcf8&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Void's Tear",
-        "100",
-        "RequisitionId=855df1e9-c754-4e2e-a691-1d8997c7b802&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Plasma Turret",
-        "100",
-        "RequisitionId=08a0f3f7-21c6-4c20-bb5f-b48432c5a8d6&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Railgun",
-        "50",
-        "RequisitionId=d7af2066-1281-4940-b4fe-d5977f90041f&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Whiplash",
-        "75",
-        "RequisitionId=a509dd61-258a-4124-b255-e88c28b8203a&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Arclight",
-        "100",
-        "RequisitionId=a60f59d2-61e1-420f-b7d5-5728b0e5d2af&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Random Weapon",
-        "75",
-        "RequisitionId=159247e8-ee1f-4bc9-9dc1-70e516e97523&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Random Weapon",
-        "100",
-        "RequisitionId=3cc13f52-d890-4fd0-b58b-409942d8e115&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Random Weapon",
-        "150",
-        "RequisitionId=9deda07f-4352-4c46-8a94-aeafaa9f72f0&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Grenade Launcher",
-        "75",
-        "RequisitionId=b337f466-aab0-4cf3-bc56-30a2bf61a80b&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Pro Pipe",
-        "100",
-        "RequisitionId=e9bbf249-1e76-4108-973c-104a62573df3&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Rocket Launcher",
-        "75",
-        "RequisitionId=51565244-1219-431f-8191-461d69dcd185&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Ad Victoriam",
-        "100",
-        "RequisitionId=37f32e6b-d191-455f-ae6a-558261a5bdc2&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "SPNKr EM",
-        "100",
-        "RequisitionId=d9898b37-25e8-44a9-9f9f-a3ca539e8c32&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "SPNKr Rocket Launcher",
-        "100",
-        "RequisitionId=c16d79b3-de85-4e7f-845d-0f7dffaff659&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "High Five",
-        "150",
-        "RequisitionId=72417c9e-516d-43eb-b843-4c2badb37e85&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "SPNKr EX",
-        "150",
-        "RequisitionId=0322ac43-1120-4989-ba98-62d31939d32c&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "SPNKR PRIME",
-        "200",
-        "RequisitionId=06c63af5-38ab-409a-9806-8710f2dcc4c5&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "ROCKET POD TURRET",
-        "150",
-        "RequisitionId=2ddbad1b-9edc-4346-adca-05418db10e43&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "ONI Rocket Turret",
-        "200",
-        "RequisitionId=b34c0f49-cb01-4733-b74e-97b03b3c7e75&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "SAW",
-        "50",
-        "RequisitionId=71e202c1-a65a-436d-a218-e77da213f5e7&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Appetite for Destruction",
-        "75",
-        "RequisitionId=5930e562-f259-4f84-887f-0dfbba271b17&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "The Answer",
-        "100",
-        "RequisitionId=246a8f14-d0a1-48b4-9a5c-30b20e5f7c63&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Scattershot",
-        "100",
-        "RequisitionId=548da64c-1774-4020-91cc-edeba424d29d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Loathsome Thing",
-        "150",
-        "RequisitionId=8e392c64-a3c7-4d4b-9221-5e00bdbfb0eb&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Didact's Signet",
-        "200",
-        "RequisitionId=b140d695-1ad1-47a6-aafe-bd56c38db0cd&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Safeguard Sentinel Beam",
-        "100",
-        "RequisitionId=fe3d305e-816c-4831-90af-e149ff154eec&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Shotgun",
-        "50",
-        "RequisitionId=20fe9475-fb44-4932-afc7-99c2ecd14d20&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Lawgiver",
-        "75",
-        "RequisitionId=b145e48b-181e-453f-a4b4-f0b33125a5bd&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Blaze of Glory",
-        "100",
-        "RequisitionId=28cc76b0-9e8c-46ad-9a75-5d405715ef2d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Oathsworn",
-        "150",
-        "RequisitionId=edea0890-59f9-4779-9b70-4f790458372f&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Sniper Rifle",
-        "75",
-        "RequisitionId=0652e368-d2a1-4b79-a25c-3b006b50b983&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "End of the Line",
-        "100",
-        "RequisitionId=cefcff2f-b0e0-442d-a244-132af412fbec&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Arrow of Time",
-        "150",
-        "RequisitionId=7483c6ce-eea1-41de-b11a-6bf295d6d9c1&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Nornfang",
-        "200",
-        "RequisitionId=a23a896d-57e6-45c3-970b-27550f0e7184&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Spartan Laser",
-        "100",
-        "RequisitionId=c1d6d4ae-c504-4041-b2d1-c66b7800a371&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Endgame",
-        "150",
-        "RequisitionId=26cf41da-f640-4bc3-b791-4aac12f388d8&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Selene's Lance",
-        "200",
-        "RequisitionId=d1eb36bd-9314-4787-8f2a-49c2b6637a6c&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Splinter Turret",
-        "100",
-        "RequisitionId=6bace91e-5557-4b5a-a88b-1f81db7e0e2a&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Storm Rifle",
-        "50",
-        "RequisitionId=f606157d-9fb3-4d57-92b9-0700423c724f&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Fury",
-        "75",
-        "RequisitionId=148029f6-568b-41ea-abd7-7274d562503f&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Blissful Slumber",
-        "100",
-        "RequisitionId=4ecd3fca-576e-4e43-b148-07026fbc9b3e&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Suppressor",
-        "50",
-        "RequisitionId=c21ebe7c-c871-425a-ad3e-1589aca29b44&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Song of Peace",
-        "75",
-        "RequisitionId=ea9938c0-4751-418a-bd50-040b48e9e8fd&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Razor's Edge",
-        "100",
-        "RequisitionId=082d79d1-c880-4555-b630-8b29bd09ac70&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Chaingun Turret",
-        "50",
-        "RequisitionId=68fa68ce-f6c5-4205-8e6c-cc05965c6361&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "ONI Chaingun Turret",
-        "150",
-        "RequisitionId=f7dacb76-e32d-4669-b06f-ddcc1cf8af96&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Jorge's Chaingun",
-        "200",
-        "RequisitionId=52f83767-07b3-4fd3-80e9-f24556d4cd0b&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "ONI Gauss Warthog",
-        "200",
-        "RequisitionId=267ea7b6-812c-474b-ba53-6aeab3f78885&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Gauss Warthog",
-        "200",
-        "RequisitionId=483e7369-05fc-43d9-b2f6-b0d6ad3e38bd&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Urban Gauss Warthog",
-        "200",
-        "RequisitionId=1977d1df-5118-47f6-8f2f-a98f8820e0a9&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Gauss Warthog",
-        "200",
-        "RequisitionId=45c59965-62af-4288-9c0c-fef6730608fe&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Ghost",
-        "75",
-        "RequisitionId=06408e4d-9442-4c61-b722-8082f7a73563&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Sword Ghost",
-        "75",
-        "RequisitionId=9cb7a100-a23b-4112-b05f-9644f32ed405&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Active Camo I",
-        "75",
-        "RequisitionId=b51925f1-cb16-455b-ad89-68a93e3f06ec&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Active Camo II",
-        "100",
-        "RequisitionId=665a7c65-25a8-4c0d-8e78-249bc0734bd3&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Active Camo III",
-        "150",
-        "RequisitionId=f1568c0a-68e7-49e3-8799-8efe53fd38f0&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Damage Boost I",
-        "100",
-        "RequisitionId=adf41201-4940-4055-8e66-dc181014edf2&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Damage Boost II",
-        "150",
-        "RequisitionId=cf9ce92d-6a24-432c-b2aa-d103d3d705de&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Damage Boost III",
-        "200",
-        "RequisitionId=7abbef0c-5cac-4d5d-af94-69490b5cb881&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Overshield I",
-        "75",
-        "RequisitionId=aedd49cd-987b-45c8-aeb7-2b6bc75594f7&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Overshield II",
-        "100",
-        "RequisitionId=255409ee-c701-4d35-a480-e4d0475fc7d5&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Overshield III",
-        "150",
-        "RequisitionId=c2783c51-04c6-49b1-b9b1-928d507c6a7b&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Speed Boost I",
-        "50",
-        "RequisitionId=83be2d7c-0bb8-4398-8dae-51319d6f7a64&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Speed Boost II",
-        "75",
-        "RequisitionId=7c573420-2a31-4162-81e5-b4734e642159&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Speed Boost III",
-        "100",
-        "RequisitionId=4003cfdb-2048-4f14-a2cc-acfe22c4f652&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Ghost Ultra",
-        "100",
-        "RequisitionId=5ca407ba-b438-44cc-bcba-cdc42dd697c4&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "TEMPLE GHOST",
-        "100",
-        "RequisitionId=778aaa3a-ae8e-444c-bf8d-a8e51ec38b17&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Gungoose",
-        "50",
-        "RequisitionId=68b47af2-6bc5-439b-8b6c-afbd220cae63&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Corp Gungoose",
-        "75",
-        "RequisitionId=00b1a962-4c2c-47bf-9718-5a1537ff004f&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "ONI Gungoose",
-        "100",
-        "RequisitionId=775fb430-9b3e-49b0-966e-ac23f5dea3ad&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Gungoose",
-        "100",
-        "RequisitionId=b30503de-f5a8-4aba-8511-7b19bef644f6&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Urban Gungoose",
-        "100",
-        "RequisitionId=f822013e-b8d4-4aea-8237-c03afde10bf6&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Gungoose",
-        "100",
-        "RequisitionId=cfc9b3a5-1767-48c6-836e-fe7a5b6839d8&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Corp Mantis",
-        "150",
-        "RequisitionId=ee21440d-9d2c-443d-8385-9ad54ccc9094&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Mantis",
-        "150",
-        "RequisitionId=8a61ebdc-66bb-47dd-a935-bd79ac85b358&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Hannibal Mantis",
-        "200",
-        "RequisitionId=e3da4dbd-83a3-4fb1-ace1-d1cd69886c30&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "ONI Mantis",
-        "200",
-        "RequisitionId=5c930ca5-65bd-4e88-9da3-37542689edfe&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Corp Mongoose",
-        "50",
-        "RequisitionId=08f898ba-3824-478f-8a77-6d415924a6ab&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Mongoose",
-        "50",
-        "RequisitionId=d2916af4-ceb6-4e32-b7a4-709ab3c2ea7f&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "ONI Mongoose",
-        "50",
-        "RequisitionId=2ee57176-db14-49e1-80ee-21e35a88e2db&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Mongoose",
-        "50",
-        "RequisitionId=df0a3aae-e0c6-4645-b0c6-d94966dbff03&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Urban Mongoose",
-        "50",
-        "RequisitionId=2aa61d7f-67df-4a0c-8be2-fd4e16630a90&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Mongoose",
-        "50",
-        "RequisitionId=6bb1829b-5c2d-4f38-ac91-8366cd0ff1ac&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Phaeton",
-        "200",
-        "RequisitionId=28532cc3-e2c1-41be-8f9f-8414910b0b18&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Phaeton Helios",
-        "200",
-        "RequisitionId=6b08196a-f851-4884-ad6f-396564744c84&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Random Vehicle",
-        "100",
-        "RequisitionId=9995c5ad-ac76-44fd-b7a8-b7b5b34825b8&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Rocket Warthog",
-        "150",
-        "RequisitionId=275fd291-780e-48b2-9c52-67cf1a10d07c&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "ONI Rocket Warthog",
-        "200",
-        "RequisitionId=bcbbd639-f7e1-46b6-9b93-9114cee61918&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Rocket Warthog",
-        "200",
-        "RequisitionId=44304d9c-6a5f-47b4-99ce-345c3d2810b4&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Urban Rocket Warthog",
-        "200",
-        "RequisitionId=470bb6fc-1ccf-4f43-b871-386d24faeb40&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Vespin Rocket Warthog",
-        "200",
-        "RequisitionId=01b1b13b-6fad-4d6e-a96a-105caf01f76f&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Rocket Warthog",
-        "200",
-        "RequisitionId=dea15851-17a1-4b68-946f-df8cca693b05&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Corp Scorpion",
-        "100",
-        "RequisitionId=2cc8a416-c198-4dbd-a000-a300f52eea9d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Scorpion",
-        "100",
-        "RequisitionId=e606dd6e-2433-4abd-90d8-be1487ff40b1&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Scorpion",
-        "150",
-        "RequisitionId=afc45f45-df13-4039-bc30-45d6473fcfd4&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Urban Scorpion",
-        "150",
-        "RequisitionId=c2aa2c12-299f-43e3-9e2f-07b9687acd18&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Scorpion",
-        "200",
-        "RequisitionId=3cbb74dd-5c91-495e-821b-9d2c296027bd&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Hannibal Scorpion",
-        "200",
-        "RequisitionId=bb53c84c-19fc-4907-bd25-5f4e496e183a&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "ONI Scorpion",
-        "200",
-        "RequisitionId=8e942311-0feb-4f2b-9cf9-4a28c5f51c42&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Corp Scout Warthog",
-        "50",
-        "RequisitionId=6387120b-2492-400b-8855-186e2942d545&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "ONI Scout Warthog",
-        "50",
-        "RequisitionId=8cf551ce-6aae-4262-8352-ec1d726f5fe5&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Rally Scout Warthog",
-        "50",
-        "RequisitionId=1fd9b68c-c89e-4208-b4fd-521a2bda526c&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Scout Warthog",
-        "50",
-        "RequisitionId=c6f31826-00d3-4a2d-9838-31c6839d6ba9&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Scout Warthog",
-        "50",
-        "RequisitionId=d8c9b04b-3395-48b5-8fa8-be9b0798a6fc&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Urban Scout Warthog",
-        "50",
-        "RequisitionId=f6ae29bd-7c56-4b8b-a99b-2d8379f6c7fb&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Scout Warthog",
-        "50",
-        "RequisitionId=3f9a32c6-9679-4120-b39f-168ae179975b&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Corp Warthog",
-        "50",
-        "RequisitionId=268fcdac-d2fa-4426-90a4-530b0d7e6f07&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Warthog",
-        "50",
-        "RequisitionId=c5041c29-0a1c-4ab3-8064-d084a6a3529c&ExpectedSellPrice=50&__RequestVerificationToken="
-    ],
-    [
-        "Rally Warthog",
-        "75",
-        "RequisitionId=3d138003-efb3-4b1f-b3bc-61f6db6aa333&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Tundra Warthog",
-        "75",
-        "RequisitionId=207e7995-938e-4393-a061-3719b344140c&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Urban Warthog",
-        "75",
-        "RequisitionId=8c6e0bb1-f263-4bcc-bb84-549b98c7d8b2&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Woodland Warthog",
-        "75",
-        "RequisitionId=258570d4-488a-4d77-ac24-6c7200a9bfe5&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "ONI Warthog",
-        "100",
-        "RequisitionId=c0715726-2632-429a-a249-3c8f0d067b7b&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Sword Needler Warthog",
-        "75",
-        "RequisitionId=2008417b-7479-415f-b70b-2460d3821f56&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Wasp",
-        "100",
-        "RequisitionId=5b5b331d-318e-4651-b55f-0a1f1565130d&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "ONI Wasp",
-        "150",
-        "RequisitionId=e46b61cc-84f8-46ce-acff-556da948e54b&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "Hannibal Wasp",
-        "200",
-        "RequisitionId=f630c910-e101-4ab0-b58f-27bedbc30860&ExpectedSellPrice=200&__RequestVerificationToken="
-    ],
-    [
-        "Sword Wraith",
-        "75",
-        "RequisitionId=468c727f-e626-4710-b61c-80dd82acf09a&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Wraith",
-        "75",
-        "RequisitionId=5ffb0462-df03-41bb-9f98-40184d7e0b7a&ExpectedSellPrice=75&__RequestVerificationToken="
-    ],
-    [
-        "Anti-Air Wraith",
-        "150",
-        "RequisitionId=46969258-e22c-47f9-a5ae-202ba1ac8597&ExpectedSellPrice=150&__RequestVerificationToken="
-    ],
-    [
-        "TEMPLE WRAITH",
-        "100",
-        "RequisitionId=0674f898-1734-46e0-baf2-92b7986fdcbf&ExpectedSellPrice=100&__RequestVerificationToken="
-    ],
-    [
-        "Wraith Ultra",
-        "100",
-        "RequisitionId=de756e6b-10a9-4cd3-99a6-22f0d890b536&ExpectedSellPrice=100&__RequestVerificationToken="
-    ]
+            "Common Arena XP Boost",
+            "75",
+            "RequisitionId=ec1dea62-86cd-4efe-b58a-45e3a236b981&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Common Gambit: Assist",
+            "75",
+            "RequisitionId=2ead1dc8-c82a-488b-a0b8-50cee41044be&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Arena RP Boost",
+            "100",
+            "RequisitionId=5888dc20-d3c1-41ba-9d7e-5baae3992ab2&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Arena XP Boost",
+            "100",
+            "RequisitionId=1f7bd827-6090-4185-a2bf-7d0e1ac77a09&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Arena XP Jackpot",
+            "100",
+            "RequisitionId=76def815-634a-42cd-b9ca-4c539205b863&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Gambit: Spartan Kills",
+            "100",
+            "RequisitionId=63e6f570-4270-42ac-a5f9-50764ca2f737&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Mission: Victory",
+            "100",
+            "RequisitionId=9c03fef6-de32-4f58-a514-7820b254b46f&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Rare Arena RP Boost",
+            "150",
+            "RequisitionId=5e801176-52da-4a2d-9229-7a8f18449178&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Arena RP Jackpot",
+            "150",
+            "RequisitionId=4a917470-da82-42c1-8d46-d02fe4cdfea7&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Arena XP Boost",
+            "150",
+            "RequisitionId=49386ddf-723b-4392-9cfd-7ac6a4b3dee6&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Gambit: Medal Count",
+            "150",
+            "RequisitionId=f4f4be30-fa4f-40f8-90d5-e3a2276caad7&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Ultra Rare Arena RP Boost",
+            "200",
+            "RequisitionId=3ec2dd37-06f4-412a-85b8-b1142f303701&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Ultra Rare Mission: Victory",
+            "200",
+            "RequisitionId=dbfcc627-6832-43b1-9191-86be3fe49cde&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Legendary Arena RP Boost",
+            "250",
+            "RequisitionId=2b5fc172-4914-437f-a506-19911964907f&ExpectedSellPrice=250&__RequestVerificationToken="
+        ],
+        [
+            "Legendary Arena XP Boost",
+            "250",
+            "RequisitionId=ef6b4dbe-c4fa-4efd-bbd6-88310d775859&ExpectedSellPrice=250&__RequestVerificationToken="
+        ],
+        [
+            "Common Warzone XP Boost",
+            "75",
+            "RequisitionId=53ab4701-1952-4743-8ff6-116e330dc7ea&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Gambit: Assist",
+            "100",
+            "RequisitionId=ba59266e-b6cd-4d1f-bd39-ddcc3c5f1a0f&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Mission: Victory",
+            "100",
+            "RequisitionId=1fcdd0b2-a1a4-40f0-88c5-b5398dd0301c&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Warzone RP Boost",
+            "100",
+            "RequisitionId=e05df769-06e8-44cd-9b68-88e8f87bfa70&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Warzone XP Boost",
+            "100",
+            "RequisitionId=ee3beb20-86c2-4edc-861f-7d0af726753f&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Uncommon Warzone XP Jackpot",
+            "100",
+            "RequisitionId=257e3408-c15b-42a0-948b-bd8027ca6d9d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Rare Gambit: Spartan Kills",
+            "150",
+            "RequisitionId=e00c5ef7-b974-4ab2-a1d5-f8062b48166f&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Warzone RP Boost",
+            "150",
+            "RequisitionId=4de82333-be7e-4739-a4b5-94477340c83c&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Warzone RP Jackpot",
+            "150",
+            "RequisitionId=1e3b0db3-9baa-4f78-afe8-4a84546fa2e9&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Rare Warzone XP Boost",
+            "150",
+            "RequisitionId=91bb4cc3-145d-4dc9-8e2b-a7a2dad70b12&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Ultra Rare Gambit: Medal Count",
+            "200",
+            "RequisitionId=62c9fcb3-1ba0-43cb-8284-91b5c565f4de&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Ultra Rare Mission: Victory",
+            "200",
+            "RequisitionId=84892278-d3f5-4fd8-b0df-a740e4e45114&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Ultra Rare Warzone RP Boost",
+            "200",
+            "RequisitionId=6bff04ed-c831-4ae6-a0be-0c7bfed0fef7&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Legendary Gambit: AI Kills",
+            "250",
+            "RequisitionId=7b494b69-d77a-4ce1-934f-44c828feb1fb&ExpectedSellPrice=250&__RequestVerificationToken="
+        ],
+        [
+            "Legendary Warzone RP Boost",
+            "250",
+            "RequisitionId=414b5d47-29ae-42cf-8796-8fc09f650678&ExpectedSellPrice=250&__RequestVerificationToken="
+        ],
+        [
+            "Beam Rifle",
+            "100",
+            "RequisitionId=e1047da5-2880-4071-8e8d-9fecd5cb4f3d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Sword of the Faithful",
+            "150",
+            "RequisitionId=e2f5c12b-072f-45d8-ab0b-699691337627&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Krith's Left Hand",
+            "200",
+            "RequisitionId=698f58e5-79e3-4529-a838-b30cfea60ad7&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Binary Rifle",
+            "150",
+            "RequisitionId=19ee4319-7c28-4166-938b-f98feebba714&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Retina of the Mind's Eye",
+            "150",
+            "RequisitionId=1e4a934b-f469-4f19-8eae-5d2062680571&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Twin Jewels of Maethrillian",
+            "200",
+            "RequisitionId=afced458-47bb-4662-97d5-d372b531b420&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Boltshot",
+            "50",
+            "RequisitionId=74fec31e-c9b0-40dc-98f7-82b3d5d94efa&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Boltshot (Closed Fist)",
+            "75",
+            "RequisitionId=65100858-b9ea-425e-ba3a-2cac18ef8c22&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Open Hand",
+            "100",
+            "RequisitionId=9fa4e8cc-5014-43df-8010-c4b97b8d523d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Brute Plasma Rifle",
+            "75",
+            "RequisitionId=5c496bd0-3a4f-4e35-9a93-55f91408ffa9&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Sorrow of Teash",
+            "100",
+            "RequisitionId=622e8d8d-c068-4d62-a773-eab47d6ee8b5&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Scale of Soirapt",
+            "150",
+            "RequisitionId=9ad8e95a-747f-4807-89a8-1a475f4210ee&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Banshee",
+            "100",
+            "RequisitionId=4a0fae1b-4f36-4848-9bab-bb593e4a6a8f&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Sword Banshee",
+            "100",
+            "RequisitionId=2f9ecd8f-ff80-494d-9005-96c557732877&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Banshee Ultra",
+            "150",
+            "RequisitionId=c6be0247-3dc5-4995-99d3-f1002bf4d867&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "TEMPLE BANSHEE",
+            "150",
+            "RequisitionId=3bf3e0ff-fe4f-4f80-84bc-28b56c1f71a9&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Corp Gauss Warthog",
+            "150",
+            "RequisitionId=0c4fdcd4-ae67-499e-b800-c87d4c18185c&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Gauss Warthog",
+            "150",
+            "RequisitionId=c65ff5e1-5c86-42e0-9aae-b5c00e7ba124&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "ONI Gauss Warthog",
+            "200",
+            "RequisitionId=267ea7b6-812c-474b-ba53-6aeab3f78885&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Gauss Warthog",
+            "200",
+            "RequisitionId=483e7369-05fc-43d9-b2f6-b0d6ad3e38bd&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Urban Gauss Warthog",
+            "200",
+            "RequisitionId=1977d1df-5118-47f6-8f2f-a98f8820e0a9&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Gauss Warthog",
+            "200",
+            "RequisitionId=45c59965-62af-4288-9c0c-fef6730608fe&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Ghost",
+            "75",
+            "RequisitionId=06408e4d-9442-4c61-b722-8082f7a73563&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Sword Ghost",
+            "75",
+            "RequisitionId=9cb7a100-a23b-4112-b05f-9644f32ed405&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Carbine",
+            "50",
+            "RequisitionId=f42672b6-e578-4e2c-a6ac-f2c0326ec41e&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Carbine (Rain of Oblivion)",
+            "75",
+            "RequisitionId=3ccacc28-3e9a-4bdc-8f94-bb706102b798&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Carbine (Blood of Suban)",
+            "100",
+            "RequisitionId=46277f4d-499d-441d-bf4a-44a5951345a6&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Energy Sword",
+            "75",
+            "RequisitionId=a93e3a6d-64f5-4c4d-b8d0-9dcac39f3401&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Energy Sword (Ravening Sliver)",
+            "100",
+            "RequisitionId=dde37842-3e4b-4f4f-a4ab-9be067d659b1&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Energy Sword (Vorpal Talon)",
+            "150",
+            "RequisitionId=be395318-f442-4d85-9e31-b4aef1b0396b&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Energy Sword (Prophets' Bane)",
+            "200",
+            "RequisitionId=03ca3f2a-c2dd-4315-8238-ac6a90b6c970&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Fuel Rod Cannon",
+            "75",
+            "RequisitionId=592489a8-edbe-4a68-b622-07c80a4be0db&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Fuel Rod Cannon (Light of Urs)",
+            "100",
+            "RequisitionId=d9bb0ce2-90cf-4d33-b173-cfc4c5c600a3&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Fuel Rod Cannon (Pool of Radiance)",
+            "150",
+            "RequisitionId=1427bb67-138b-4527-9788-3014398d7fb1&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Gauss Turret",
+            "200",
+            "RequisitionId=48e94634-c9f0-4acf-9dfa-3b7b4bad43f5&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "ONI Gauss Turret",
+            "200",
+            "RequisitionId=fb205987-ecdc-4957-87ac-dea93c0c4372&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Corpsemaker",
+            "100",
+            "RequisitionId=7a8e3278-a4a0-431e-9005-28a434d023cc&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Gravity Hammer",
+            "100",
+            "RequisitionId=06106fff-7cd5-48e2-8573-4dbfce71c8f2&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Grinder",
+            "150",
+            "RequisitionId=81186db0-444c-4214-b756-610c3c55904e&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Tartarus' Gavel",
+            "200",
+            "RequisitionId=913ae127-131d-40ad-a1b8-f25b1d23ebd3&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Halo 2 Beam Rifle",
+            "100",
+            "RequisitionId=e60e4e8b-5501-46d1-80cc-8f1368f654df&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Halo 2 Beam Rifle Alpha",
+            "150",
+            "RequisitionId=1816967b-26a6-4555-acde-2c104abfe851&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Halo 2 Beam Rifle Delta",
+            "200",
+            "RequisitionId=19d4cff3-1d9d-4936-92ca-6bf2c2414391&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Wicked Grasp",
+            "100",
+            "RequisitionId=c6d346df-3632-4a26-90ab-5efd8f180d62&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Berserker's Claw",
+            "150",
+            "RequisitionId=3974cfbf-e5a0-473d-bd17-6d2171b93f56&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Hydra Launcher",
+            "75",
+            "RequisitionId=d97e51e5-a305-42ad-b142-0121823aa555&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Hydra Launcher (Typhon)",
+            "100",
+            "RequisitionId=8fcd8fb0-b3cd-4eab-9d67-767a933cda52&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Hydra Laucher (Echidna)",
+            "150",
+            "RequisitionId=11c60ec0-16eb-4ebc-a596-4ae755a7ab76&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Incineration Cannon",
+            "100",
+            "RequisitionId=d5232e38-2e55-47b7-b72e-c2b41f93ffbf&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Incineration Cannon (River of Light)",
+            "150",
+            "RequisitionId=425ec88e-daae-4e45-ae18-57ba36e12f07&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Incineration Cannon (Heartseeker)",
+            "200",
+            "RequisitionId=0152759a-a58e-4033-87c4-f90075319c72&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "LightRifle",
+            "100",
+            "RequisitionId=aa673098-1abf-49d1-aee5-0717badda29f&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Barbed Lance",
+            "150",
+            "RequisitionId=53d939ad-703d-4a54-84ea-8167f51cd54a&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Dying Star",
+            "200",
+            "RequisitionId=89e4d22d-3389-4ca4-85cd-f6f494009d1e&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Whispered Truth",
+            "150",
+            "RequisitionId=b426c48a-785b-4f97-95f6-d33f981a08b0&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Halo: Combat Evolved Pistol",
+            "200",
+            "RequisitionId=3c75909d-c858-44a5-8294-b1cc088531f4&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Needler",
+            "50",
+            "RequisitionId=70477c8f-918f-4375-87de-7eaa2243deb7&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Hailstorm",
+            "75",
+            "RequisitionId=e35c7d82-42bd-4ef9-a1d5-a625994aa1b0&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Talon of the Lost",
+            "100",
+            "RequisitionId=7944b113-0662-4e08-8cc4-096e0a4042a2&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Plasma Caster",
+            "75",
+            "RequisitionId=9cdc88b9-f514-4721-b1d3-8684b75a282f&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Scourge of Fire",
+            "100",
+            "RequisitionId=2cef416f-6c14-4bb0-9524-e03628e34084&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "White Scar",
+            "150",
+            "RequisitionId=69472de1-6af2-4851-8912-be2f9204bb5e&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Plasma Pistol",
+            "50",
+            "RequisitionId=56853613-e098-4ace-9717-80708663b870&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Spitfire",
+            "75",
+            "RequisitionId=a0a0b345-cc6a-4072-82bd-ba18de00bcf8&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Void's Tear",
+            "100",
+            "RequisitionId=855df1e9-c754-4e2e-a691-1d8997c7b802&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Plasma Turret",
+            "100",
+            "RequisitionId=08a0f3f7-21c6-4c20-bb5f-b48432c5a8d6&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Railgun",
+            "50",
+            "RequisitionId=d7af2066-1281-4940-b4fe-d5977f90041f&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Whiplash",
+            "75",
+            "RequisitionId=a509dd61-258a-4124-b255-e88c28b8203a&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Arclight",
+            "100",
+            "RequisitionId=a60f59d2-61e1-420f-b7d5-5728b0e5d2af&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Random Weapon",
+            "75",
+            "RequisitionId=159247e8-ee1f-4bc9-9dc1-70e516e97523&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Random Weapon",
+            "100",
+            "RequisitionId=3cc13f52-d890-4fd0-b58b-409942d8e115&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Random Weapon",
+            "150",
+            "RequisitionId=9deda07f-4352-4c46-8a94-aeafaa9f72f0&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Grenade Launcher",
+            "75",
+            "RequisitionId=b337f466-aab0-4cf3-bc56-30a2bf61a80b&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Pro Pipe",
+            "100",
+            "RequisitionId=e9bbf249-1e76-4108-973c-104a62573df3&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Rocket Launcher",
+            "75",
+            "RequisitionId=51565244-1219-431f-8191-461d69dcd185&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Ad Victoriam",
+            "100",
+            "RequisitionId=37f32e6b-d191-455f-ae6a-558261a5bdc2&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "SPNKr EM",
+            "100",
+            "RequisitionId=d9898b37-25e8-44a9-9f9f-a3ca539e8c32&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "SPNKr Rocket Launcher",
+            "100",
+            "RequisitionId=c16d79b3-de85-4e7f-845d-0f7dffaff659&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "High Five",
+            "150",
+            "RequisitionId=72417c9e-516d-43eb-b843-4c2badb37e85&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "SPNKr EX",
+            "150",
+            "RequisitionId=0322ac43-1120-4989-ba98-62d31939d32c&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "SPNKR PRIME",
+            "200",
+            "RequisitionId=06c63af5-38ab-409a-9806-8710f2dcc4c5&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "ROCKET POD TURRET",
+            "150",
+            "RequisitionId=2ddbad1b-9edc-4346-adca-05418db10e43&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "ONI Rocket Turret",
+            "200",
+            "RequisitionId=b34c0f49-cb01-4733-b74e-97b03b3c7e75&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "SAW",
+            "50",
+            "RequisitionId=71e202c1-a65a-436d-a218-e77da213f5e7&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Appetite for Destruction",
+            "75",
+            "RequisitionId=5930e562-f259-4f84-887f-0dfbba271b17&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "The Answer",
+            "100",
+            "RequisitionId=246a8f14-d0a1-48b4-9a5c-30b20e5f7c63&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Scattershot",
+            "100",
+            "RequisitionId=548da64c-1774-4020-91cc-edeba424d29d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Loathsome Thing",
+            "150",
+            "RequisitionId=8e392c64-a3c7-4d4b-9221-5e00bdbfb0eb&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Didact's Signet",
+            "200",
+            "RequisitionId=b140d695-1ad1-47a6-aafe-bd56c38db0cd&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Safeguard Sentinel Beam",
+            "100",
+            "RequisitionId=fe3d305e-816c-4831-90af-e149ff154eec&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Shotgun",
+            "50",
+            "RequisitionId=20fe9475-fb44-4932-afc7-99c2ecd14d20&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Lawgiver",
+            "75",
+            "RequisitionId=b145e48b-181e-453f-a4b4-f0b33125a5bd&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Blaze of Glory",
+            "100",
+            "RequisitionId=28cc76b0-9e8c-46ad-9a75-5d405715ef2d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Oathsworn",
+            "150",
+            "RequisitionId=edea0890-59f9-4779-9b70-4f790458372f&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Sniper Rifle",
+            "75",
+            "RequisitionId=0652e368-d2a1-4b79-a25c-3b006b50b983&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "End of the Line",
+            "100",
+            "RequisitionId=cefcff2f-b0e0-442d-a244-132af412fbec&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Arrow of Time",
+            "150",
+            "RequisitionId=7483c6ce-eea1-41de-b11a-6bf295d6d9c1&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Nornfang",
+            "200",
+            "RequisitionId=a23a896d-57e6-45c3-970b-27550f0e7184&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Spartan Laser",
+            "100",
+            "RequisitionId=c1d6d4ae-c504-4041-b2d1-c66b7800a371&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Endgame",
+            "150",
+            "RequisitionId=26cf41da-f640-4bc3-b791-4aac12f388d8&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Selene's Lance",
+            "200",
+            "RequisitionId=d1eb36bd-9314-4787-8f2a-49c2b6637a6c&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Splinter Turret",
+            "100",
+            "RequisitionId=6bace91e-5557-4b5a-a88b-1f81db7e0e2a&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Storm Rifle",
+            "50",
+            "RequisitionId=f606157d-9fb3-4d57-92b9-0700423c724f&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Fury",
+            "75",
+            "RequisitionId=148029f6-568b-41ea-abd7-7274d562503f&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Blissful Slumber",
+            "100",
+            "RequisitionId=4ecd3fca-576e-4e43-b148-07026fbc9b3e&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Suppressor",
+            "50",
+            "RequisitionId=c21ebe7c-c871-425a-ad3e-1589aca29b44&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Song of Peace",
+            "75",
+            "RequisitionId=ea9938c0-4751-418a-bd50-040b48e9e8fd&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Razor's Edge",
+            "100",
+            "RequisitionId=082d79d1-c880-4555-b630-8b29bd09ac70&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Chaingun Turret",
+            "50",
+            "RequisitionId=68fa68ce-f6c5-4205-8e6c-cc05965c6361&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "ONI Chaingun Turret",
+            "150",
+            "RequisitionId=f7dacb76-e32d-4669-b06f-ddcc1cf8af96&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Jorge's Chaingun",
+            "200",
+            "RequisitionId=52f83767-07b3-4fd3-80e9-f24556d4cd0b&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "ONI Gauss Warthog",
+            "200",
+            "RequisitionId=267ea7b6-812c-474b-ba53-6aeab3f78885&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Gauss Warthog",
+            "200",
+            "RequisitionId=483e7369-05fc-43d9-b2f6-b0d6ad3e38bd&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Urban Gauss Warthog",
+            "200",
+            "RequisitionId=1977d1df-5118-47f6-8f2f-a98f8820e0a9&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Gauss Warthog",
+            "200",
+            "RequisitionId=45c59965-62af-4288-9c0c-fef6730608fe&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Ghost",
+            "75",
+            "RequisitionId=06408e4d-9442-4c61-b722-8082f7a73563&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Sword Ghost",
+            "75",
+            "RequisitionId=9cb7a100-a23b-4112-b05f-9644f32ed405&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Active Camo I",
+            "75",
+            "RequisitionId=b51925f1-cb16-455b-ad89-68a93e3f06ec&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Active Camo II",
+            "100",
+            "RequisitionId=665a7c65-25a8-4c0d-8e78-249bc0734bd3&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Active Camo III",
+            "150",
+            "RequisitionId=f1568c0a-68e7-49e3-8799-8efe53fd38f0&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Damage Boost I",
+            "100",
+            "RequisitionId=adf41201-4940-4055-8e66-dc181014edf2&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Damage Boost II",
+            "150",
+            "RequisitionId=cf9ce92d-6a24-432c-b2aa-d103d3d705de&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Damage Boost III",
+            "200",
+            "RequisitionId=7abbef0c-5cac-4d5d-af94-69490b5cb881&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Overshield I",
+            "75",
+            "RequisitionId=aedd49cd-987b-45c8-aeb7-2b6bc75594f7&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Overshield II",
+            "100",
+            "RequisitionId=255409ee-c701-4d35-a480-e4d0475fc7d5&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Overshield III",
+            "150",
+            "RequisitionId=c2783c51-04c6-49b1-b9b1-928d507c6a7b&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Speed Boost I",
+            "50",
+            "RequisitionId=83be2d7c-0bb8-4398-8dae-51319d6f7a64&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Speed Boost II",
+            "75",
+            "RequisitionId=7c573420-2a31-4162-81e5-b4734e642159&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Speed Boost III",
+            "100",
+            "RequisitionId=4003cfdb-2048-4f14-a2cc-acfe22c4f652&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Ghost Ultra",
+            "100",
+            "RequisitionId=5ca407ba-b438-44cc-bcba-cdc42dd697c4&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "TEMPLE GHOST",
+            "100",
+            "RequisitionId=778aaa3a-ae8e-444c-bf8d-a8e51ec38b17&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Gungoose",
+            "50",
+            "RequisitionId=68b47af2-6bc5-439b-8b6c-afbd220cae63&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Corp Gungoose",
+            "75",
+            "RequisitionId=00b1a962-4c2c-47bf-9718-5a1537ff004f&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "ONI Gungoose",
+            "100",
+            "RequisitionId=775fb430-9b3e-49b0-966e-ac23f5dea3ad&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Gungoose",
+            "100",
+            "RequisitionId=b30503de-f5a8-4aba-8511-7b19bef644f6&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Urban Gungoose",
+            "100",
+            "RequisitionId=f822013e-b8d4-4aea-8237-c03afde10bf6&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Gungoose",
+            "100",
+            "RequisitionId=cfc9b3a5-1767-48c6-836e-fe7a5b6839d8&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Corp Mantis",
+            "150",
+            "RequisitionId=ee21440d-9d2c-443d-8385-9ad54ccc9094&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Mantis",
+            "150",
+            "RequisitionId=8a61ebdc-66bb-47dd-a935-bd79ac85b358&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Hannibal Mantis",
+            "200",
+            "RequisitionId=e3da4dbd-83a3-4fb1-ace1-d1cd69886c30&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "ONI Mantis",
+            "200",
+            "RequisitionId=5c930ca5-65bd-4e88-9da3-37542689edfe&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Corp Mongoose",
+            "50",
+            "RequisitionId=08f898ba-3824-478f-8a77-6d415924a6ab&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Mongoose",
+            "50",
+            "RequisitionId=d2916af4-ceb6-4e32-b7a4-709ab3c2ea7f&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "ONI Mongoose",
+            "50",
+            "RequisitionId=2ee57176-db14-49e1-80ee-21e35a88e2db&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Mongoose",
+            "50",
+            "RequisitionId=df0a3aae-e0c6-4645-b0c6-d94966dbff03&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Urban Mongoose",
+            "50",
+            "RequisitionId=2aa61d7f-67df-4a0c-8be2-fd4e16630a90&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Mongoose",
+            "50",
+            "RequisitionId=6bb1829b-5c2d-4f38-ac91-8366cd0ff1ac&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Phaeton",
+            "200",
+            "RequisitionId=28532cc3-e2c1-41be-8f9f-8414910b0b18&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Phaeton Helios",
+            "200",
+            "RequisitionId=6b08196a-f851-4884-ad6f-396564744c84&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Random Vehicle",
+            "100",
+            "RequisitionId=9995c5ad-ac76-44fd-b7a8-b7b5b34825b8&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Rocket Warthog",
+            "150",
+            "RequisitionId=275fd291-780e-48b2-9c52-67cf1a10d07c&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "ONI Rocket Warthog",
+            "200",
+            "RequisitionId=bcbbd639-f7e1-46b6-9b93-9114cee61918&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Rocket Warthog",
+            "200",
+            "RequisitionId=44304d9c-6a5f-47b4-99ce-345c3d2810b4&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Urban Rocket Warthog",
+            "200",
+            "RequisitionId=470bb6fc-1ccf-4f43-b871-386d24faeb40&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Vespin Rocket Warthog",
+            "200",
+            "RequisitionId=01b1b13b-6fad-4d6e-a96a-105caf01f76f&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Rocket Warthog",
+            "200",
+            "RequisitionId=dea15851-17a1-4b68-946f-df8cca693b05&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Corp Scorpion",
+            "100",
+            "RequisitionId=2cc8a416-c198-4dbd-a000-a300f52eea9d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Scorpion",
+            "100",
+            "RequisitionId=e606dd6e-2433-4abd-90d8-be1487ff40b1&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Scorpion",
+            "150",
+            "RequisitionId=afc45f45-df13-4039-bc30-45d6473fcfd4&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Urban Scorpion",
+            "150",
+            "RequisitionId=c2aa2c12-299f-43e3-9e2f-07b9687acd18&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Scorpion",
+            "200",
+            "RequisitionId=3cbb74dd-5c91-495e-821b-9d2c296027bd&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Hannibal Scorpion",
+            "200",
+            "RequisitionId=bb53c84c-19fc-4907-bd25-5f4e496e183a&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "ONI Scorpion",
+            "200",
+            "RequisitionId=8e942311-0feb-4f2b-9cf9-4a28c5f51c42&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Corp Scout Warthog",
+            "50",
+            "RequisitionId=6387120b-2492-400b-8855-186e2942d545&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "ONI Scout Warthog",
+            "50",
+            "RequisitionId=8cf551ce-6aae-4262-8352-ec1d726f5fe5&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Rally Scout Warthog",
+            "50",
+            "RequisitionId=1fd9b68c-c89e-4208-b4fd-521a2bda526c&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Scout Warthog",
+            "50",
+            "RequisitionId=c6f31826-00d3-4a2d-9838-31c6839d6ba9&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Scout Warthog",
+            "50",
+            "RequisitionId=d8c9b04b-3395-48b5-8fa8-be9b0798a6fc&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Urban Scout Warthog",
+            "50",
+            "RequisitionId=f6ae29bd-7c56-4b8b-a99b-2d8379f6c7fb&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Scout Warthog",
+            "50",
+            "RequisitionId=3f9a32c6-9679-4120-b39f-168ae179975b&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Corp Warthog",
+            "50",
+            "RequisitionId=268fcdac-d2fa-4426-90a4-530b0d7e6f07&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Warthog",
+            "50",
+            "RequisitionId=c5041c29-0a1c-4ab3-8064-d084a6a3529c&ExpectedSellPrice=50&__RequestVerificationToken="
+        ],
+        [
+            "Rally Warthog",
+            "75",
+            "RequisitionId=3d138003-efb3-4b1f-b3bc-61f6db6aa333&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Tundra Warthog",
+            "75",
+            "RequisitionId=207e7995-938e-4393-a061-3719b344140c&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Urban Warthog",
+            "75",
+            "RequisitionId=8c6e0bb1-f263-4bcc-bb84-549b98c7d8b2&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Woodland Warthog",
+            "75",
+            "RequisitionId=258570d4-488a-4d77-ac24-6c7200a9bfe5&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "ONI Warthog",
+            "100",
+            "RequisitionId=c0715726-2632-429a-a249-3c8f0d067b7b&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Sword Needler Warthog",
+            "75",
+            "RequisitionId=2008417b-7479-415f-b70b-2460d3821f56&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Wasp",
+            "100",
+            "RequisitionId=5b5b331d-318e-4651-b55f-0a1f1565130d&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "ONI Wasp",
+            "150",
+            "RequisitionId=e46b61cc-84f8-46ce-acff-556da948e54b&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "Hannibal Wasp",
+            "200",
+            "RequisitionId=f630c910-e101-4ab0-b58f-27bedbc30860&ExpectedSellPrice=200&__RequestVerificationToken="
+        ],
+        [
+            "Sword Wraith",
+            "75",
+            "RequisitionId=468c727f-e626-4710-b61c-80dd82acf09a&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Wraith",
+            "75",
+            "RequisitionId=5ffb0462-df03-41bb-9f98-40184d7e0b7a&ExpectedSellPrice=75&__RequestVerificationToken="
+        ],
+        [
+            "Anti-Air Wraith",
+            "150",
+            "RequisitionId=46969258-e22c-47f9-a5ae-202ba1ac8597&ExpectedSellPrice=150&__RequestVerificationToken="
+        ],
+        [
+            "TEMPLE WRAITH",
+            "100",
+            "RequisitionId=0674f898-1734-46e0-baf2-92b7986fdcbf&ExpectedSellPrice=100&__RequestVerificationToken="
+        ],
+        [
+            "Wraith Ultra",
+            "100",
+            "RequisitionId=de756e6b-10a9-4cd3-99a6-22f0d890b536&ExpectedSellPrice=100&__RequestVerificationToken="
+        ]
     ]
 }

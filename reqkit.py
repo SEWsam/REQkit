@@ -2,12 +2,13 @@
 Copyright (c) 2020 - 2021 SEWsam
 
 Author: SEWsam
-Source version: 1.4
+Source version: 2.0
 """
 import json
 import os
 import sys
 import time
+from typing import Union
 from json.decoder import JSONDecodeError
 from zipfile import ZipFile
 
@@ -33,6 +34,54 @@ buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/re
 sell_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/sell"
 
 
+class REQStore:
+    def __init__(self, timeout=10):
+        """Class interface for Halo 5 REQ Store
+
+        :param int timeout: Timeout for login. Default=10
+        """
+
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
+        self.driver: Chrome = Chrome("chromedriver", options=chrome_options)
+        self.token: str = ""
+        self.timeout: int = timeout
+
+    def login(self, username, password):
+        # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
+        self.driver.get(login_url)
+
+        un_field = (By.ID, "i0116")
+        pw_field = (By.ID, "i0118")
+        next_button = (By.ID, "idSIButton9")
+
+        WebDriverWait(self.driver, self.timeout).until(ec.presence_of_element_located(un_field)).send_keys(username)
+
+        WebDriverWait(self.driver, self.timeout).until(ec.element_to_be_clickable(next_button)).click()
+
+        WebDriverWait(self.driver, self.timeout).until(ec.element_to_be_clickable(pw_field)).send_keys(password)
+
+        log_in = (By.XPATH, '//*[contains(@value, "Sign in")]')
+        WebDriverWait(self.driver, self.timeout).until(ec.presence_of_element_located(log_in)).click()
+
+    def get_token(self):
+        # Get authentication for account actions, this also checks if the user ever actually logged in (Correct password)
+        verify_url = "https://account.microsoft.com/"
+        self.driver.request("GET", verify_url)
+        try:
+            token_element = self.driver.find_element_by_name("__RequestVerificationToken")
+            self.token = token_element.get_attribute("value")
+            return True
+        except selenium.common.exceptions.NoSuchElementException:
+            # Remove this, move it below.
+            print(
+                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
+            # Keep this. Message above should be removed and should be a response to 'retry' being returned.
+            return False
+
+
 def update():
     print(f"[!] A REQkit update ({Fore.YELLOW}{remote_db['version']}{Style.RESET_ALL}) is required. Installing now.")
     time.sleep(.5)
@@ -43,9 +92,6 @@ def update():
     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Update Successful. Please relaunch REQkit. Exiting in 2 seconds.")
     time.sleep(2)
     sys.exit()
-
-    # TODO: Save for v1.5.x
-    # subprocess.Popen(["reqkit.exe", f"--{username}"])
 
 
 def update_driver(task):
@@ -70,46 +116,7 @@ def update_driver(task):
     time.sleep(1.5)
 
 
-def login(user, passwd):
-    # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    driver = Chrome("C:\\bin\\chromedriver", options=chrome_options)  # TODO: Add var for webdriver location
-    driver.get(login_url)
-
-    un_field = (By.ID, "i0116")
-    pw_field = (By.ID, "i0118")
-    next_button = (By.ID, "idSIButton9")
-
-    WebDriverWait(driver, 20).until(ec.presence_of_element_located(un_field)).send_keys(user)
-
-    WebDriverWait(driver, 20).until(ec.element_to_be_clickable(next_button)).click()
-
-    WebDriverWait(driver, 20).until(ec.element_to_be_clickable(pw_field)).send_keys(passwd)
-
-    log_in = (By.XPATH, '//*[contains(@value, "Sign in")]')
-    WebDriverWait(driver, 20).until(ec.presence_of_element_located(log_in)).click()
-
-    return driver
-
-
-def get_token(driver):
-    # Get authentication for account actions, this also checks if the user ever actually logged in (Correct password)
-    verify_url = "https://account.microsoft.com/"
-    driver.request("GET", verify_url)
-    try:
-        token_element = driver.find_element_by_name("__RequestVerificationToken")
-        return token_element.get_attribute("value")
-    except selenium.common.exceptions.NoSuchElementException:
-        # Remove this, move it below.
-        print(
-            f"[{Fore.RED}-{Style.RESET_ALL}] Failed to verify login with Xbox. Maybe Incorrect Password?")
-        # Keep this. Message above should be removed and should be a response to 'retry' being returned.
-        return "retry"
-
-
-def generate_data(pack_name=None, check=False):
+def generate_data(pack_name: str = None, check=False) -> Union[dict, bool]:
     for pack in db["packs"]:
         if pack[0] == pack_name:
             if not check:
@@ -216,10 +223,58 @@ def sell_cards(driver, token, card_id, quantity):
             continue
 
 
-def sell_cmdline(driver, token):
+@click.group(options_metavar="<options>")
+@click.option(
+    "--username", "-u", metavar="Email",
+    help="The Microsoft/Xbox email associated with your Halo 5 Profile"
+)
+@click.option(
+    "--password", "-p", metavar="Text",
+    help="The Password for the associated Microsoft/Xbox email account."
+)
+@click.pass_context
+def main(ctx, username, password):
+    """
+    Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
+
+    Minimal help display. Run '--help noarg', or '-h noarg' for more info
+    """
+    ctx.ensure_obj(REQStore)
+    if username is None or password is None:
+        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
+        sys.exit(1)
+
+    print(f"[{dot}] Logging in to Halo with email '{username}'...")
+    has_tried = False
+    while True:
+        try:
+            ctx.obj.login(username, password)
+        except selenium.common.exceptions.TimeoutException:
+            print(f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Incorrect Username?")
+            sys.exit(1)
+
+        print(f"[{dot}] Verifying login with Xbox...")
+        token = ctx.obj.get_token()
+        if token:
+            break
+        else:
+            if not has_tried:
+                print(f"[{dot}] Retrying")
+                has_tried = True
+                continue
+            if has_tried:
+                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
+                sys.exit(1)
+
+    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
+
+
+@main.command()
+@click.pass_context
+def cli(ctx, token):  # TODO: add token to ctx.obj {}
     print(f"\n{Fore.YELLOW}Type 'help' for a list of commands.{Style.RESET_ALL}\n")
     while True:
-        print(f"REQkit Sell Mode: {Fore.GREEN}${Style.RESET_ALL} ", end="")
+        print(f"REQkit CLI Mode: {Fore.GREEN}%{Style.RESET_ALL} ", end="")
         cmd = input().lower()
         if cmd == "exit":
             return
@@ -230,7 +285,7 @@ def sell_cmdline(driver, token):
             continue
         elif cmd == "help":
             print(
-                "REQkit Sell Mode Commands:\n"
+                "REQkit CLI Mode Commands:\n"
                 "   * help - Shows this menu\n"
                 "   * list - list all reqs and their IDs\n"
                 "   * find <term> - find a REQ and its ID by search term.\n"
@@ -262,76 +317,7 @@ def sell_cmdline(driver, token):
 
             sell_cards(driver, token, card_id, quantity)
         else:
-            print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Argument. Type 'help' for more info.\n")
-
-
-CONTEXT_SETTINGS = dict(help_option_names=['--usage'])
-
-
-@click.command(options_metavar="<options>", context_settings=CONTEXT_SETTINGS)
-@click.argument('req-arg', metavar="<REQ Pack Name|noarg>")
-@click.option("--help", "-h", is_flag=True, help="More detailed help. Run 'reqkit.py -h noarg'")
-@click.option(
-    "--username", "-u", metavar="Email",
-    help="The Microsoft/Xbox email associated with your Halo 5 Profile"
-)
-@click.option(
-    "--password", "-p", metavar="Text",
-    help="The Password for the associated Microsoft/Xbox email account."
-)
-def main(req_arg, help, username, password):
-    """
-    Buys 'REQ Packs' for the game "Halo 5: Guardians'.\n
-
-    Minimal help display. Run '--help noarg', or '-h noarg' for more info
-    """
-
-    if help:
-        print(
-            f"Usage: reqkit.exe [-u <username> -p <password>] <REQ Pack Name|Function>\n\nBuys 'REQ Packs' for 'Halo 5 "
-            f"Guardians'.\n\nUse the 'sell' function to sell packs. (run 'reqkit.exe -u <username> -p <password> sell')"
-            f"\nThe REQ Pack Names are:\n{db['docstring']}"
-        )
-        sys.exit()
-
-    if username is None or password is None:
-        print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Both Username and Password Option need to be filled.")
-        return
-    if req_arg != "sell":
-        if not generate_data(pack_name=req_arg, check=True):
-            print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Invalid Argument. Enter either a REQ pack name, or 'sell'.")
-            return
-
-    print(f"[{dot}] Logging in to Halo with email '{username}'...")
-    second_try = False
-    while True:
-        try:
-            driver = login(username, password)
-        except selenium.common.exceptions.TimeoutException:
-            print(
-                f"[{Fore.RED}-{Style.RESET_ALL}] Failed to login with Xbox. Maybe Incorrect Username?")
-            return
-
-        print(f"[{dot}] Verifying login with Xbox...")
-
-        token = get_token(driver)
-        if token != "retry":
-            break
-        else:
-            if not second_try:
-                print(f"[{dot}] Retrying")
-                second_try = True
-                continue
-            if second_try:
-                print(f"[{Fore.RED}-{Style.RESET_ALL}] Retried login twice, but failed. Exiting...")
-                return
-
-    print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success Logging in!")
-
-    if req_arg != "sell":
-        buy_pack(driver, token, req_arg)
-    else:
-        sell_cmdline(driver, token)
+            print(f"[{Fore.RED}-{Style.RESET_ALL}] Invalid Command. Type 'help' for more info.\n")
 
 
 if __name__ == '__main__':
@@ -340,6 +326,7 @@ if __name__ == '__main__':
 
     with open("resource/logo") as f:
         print(f.read())
+
     print(f"{Fore.CYAN}REQkit Version {db['version']}{Style.RESET_ALL}")
     print(f"{Fore.GREEN}A tool for purchasing REQ Packs using the undocumented Halo 5 API{Style.RESET_ALL}")
     print(
@@ -347,7 +334,7 @@ if __name__ == '__main__':
         f"{Style.RESET_ALL}\n"
     )
 
-    remote_db = requests.get("https://sewsam.github.io/download/4x-db.json").json()
+    remote_db = requests.get("https://sewsam.github.io/download/db.json").json()
     remote_ver = remote_db["version"].split(".")
     local_ver = db["version"].split(".")
 
@@ -371,7 +358,7 @@ if __name__ == '__main__':
             pass
 
     try:
-        main()
+        main(obj=REQStore())
     except selenium.common.exceptions.SessionNotCreatedException:
         print("[!] Chromedriver update required. Updating now...")
         update_driver("update")

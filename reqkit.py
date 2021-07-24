@@ -25,13 +25,6 @@ from seleniumrequests import Chrome  # noqa
 init(convert=True)
 dot = u'\u00b7'
 
-login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
-            ".offline_access&response_type=code&redirect_uri=https:%2f%2fwww.halowaypoint.com%2fauth%2fcallback" \
-            "&locale=en-us&display=touch&state=https%253a%252f%252fwww.halowaypoint.com%252fen-us "
-
-buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
-
-sell_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/sell"
 
 
 class REQStore:
@@ -48,6 +41,15 @@ class REQStore:
         self.driver: Chrome = Chrome("chromedriver", options=chrome_options)
         self.token: str = ""
         self.timeout: int = timeout
+
+
+        self.login_url = "https://login.live.com/oauth20_authorize.srf?client_id=000000004C0BD2F1&scope=xbox.basic+xbox" \
+                    ".offline_access&response_type=code&redirect_uri=https:%2f%2fwww.halowaypoint.com%2fauth%2fcallback" \
+                    "&locale=en-us&display=touch&state=https%253a%252f%252fwww.halowaypoint.com%252fen-us "
+
+        self.buy_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/buy-pack"
+
+        self.sell_url = "https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/sell"
 
     def login(self, username, password):
         # Type User and password into site. Incorrect username = unclickable button = timeout. Incorrect password = no token
@@ -81,6 +83,29 @@ class REQStore:
             # Keep this. Message above should be removed and should be a response to 'retry' being returned.
             return False
 
+    def buy_request(self, request_data): 
+        headers = {
+            'Connection': 'keep-alive',
+            'Origin': 'https://www.halowaypoint.com',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
+                          'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'Accept': '*/*',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Request-Id': '|pXnSc.C9p//',
+            'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
+            'Sec-Fetch-Site': 'same-origin',
+            'Sec-Fetch-Mode': 'cors',
+            'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
+        }
+        
+        request_data += self.token
+        response = self.driver.request("POST", self.buy_url, headers=headers, data=request_data).content.decode()
+        json_response = json.loads(response)
+
+        return json_response
 
 def update():
     print(f"[!] A REQkit update ({Fore.YELLOW}{remote_db['version']}{Style.RESET_ALL}) is required. Installing now.")
@@ -116,10 +141,10 @@ def update_driver(task):
     time.sleep(1.5)
 
 
-def generate_data(pack_name: str = None, check=False) -> Union[dict, bool]:
+def query_pack(pack_name: str = None, get_data=True) -> Union[dict, bool]:
     for pack in db["packs"]:
         if pack[0] == pack_name:
-            if not check:
+            if get_data:
                 return pack
             else:
                 return True
@@ -127,41 +152,23 @@ def generate_data(pack_name: str = None, check=False) -> Union[dict, bool]:
     return False
 
 
-def buy_pack(driver, token, pack_name):
-    data = generate_data(pack_name=pack_name)
+def buy_pack(ctx, pack_name):
+    data = query_pack(pack_name=pack_name)
     pack_full_name = data[1]
     price = data[2]
-    request_data = data[3] + token
+    request_data = data[3]
 
     while True:
         confirm_buy = input(f"[?] {pack_full_name} will be purchased for {price} REQ Points. Are you sure? (y/n)")
         if confirm_buy[0] == 'y':
             print(f"[{dot}] Buying pack...")
-            headers = {
-                'Connection': 'keep-alive',
-                'Origin': 'https://www.halowaypoint.com',
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 ( KHTML, '
-                              'like Gecko) Chrome/79.0.3945.117 Safari/537.36',
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                'Accept': '*/*',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Request-Id': '|pXnSc.C9p//',
-                'Request-Context': 'appId=cid-v1:43ddedb6-69f4-462e-a9bf-ab85dd647d12',
-                'Sec-Fetch-Site': 'same-origin',
-                'Sec-Fetch-Mode': 'cors',
-                'Referer': 'https://www.halowaypoint.com/en-us/games/halo-5-guardians/xbox-one/requisitions/store',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Accept-Language': 'en-US,en;q=0.9,zh-TW;q=0.8,zh;q=0.7,es;q=0.6',
-            }
-
-            response = driver.request("POST", buy_url, headers=headers, data=request_data).content.decode()
-            json_response = json.loads(response)
+            buy_response = ctx.obj.buy_request(request_data)
             try:
-                if json_response["State"] is None:
+                if buy_response["State"] is None:
                     print(f"[{Fore.GREEN}+{Style.RESET_ALL}] Success buying REQ Pack!")
                 break
             except KeyError:
-                if json_response["Message"] == "You do not have enough credits to purchase this":
+                if buy_response["Message"] == "You do not have enough credits to purchase this":
                     print(f"[{Fore.RED}-{Style.RESET_ALL}] Error: Insufficient REQ Points Balance.")
                 break
         elif confirm_buy[0] == 'n':
